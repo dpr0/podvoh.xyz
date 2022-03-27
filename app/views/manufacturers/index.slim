@@ -20,6 +20,9 @@ section.info-tiles
       - batch.each do |manufacturer|
         .tile.is-parent
           article.tile.is-child.box
-            p.subtitle = manufacturer.name
+            p.subtitle
+              span class="flag-icon flag-icon-#{manufacturer.country}"
+              | &nbsp
+              = manufacturer.name
             p = link_to manufacturer_path(manufacturer.id) do
-              = image_tag "manufacturers/logo/#{manufacturer.code}.jpg"
+              = image_tag "manufacturers/logo/#{manufacturer.code}.jpg", size: '50%xauto'

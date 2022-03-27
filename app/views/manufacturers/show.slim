@@ -1,13 +1,13 @@
-section.text-center
+section.has-text-center
   .container
-    .row
-      .col-sm-3.bg-gradient-dark
-        h1.text-uppercase = link_to "#{@manufacturer.name}", '#'
-        h1 = flag_icon(@manufacturer.country)
-      .col-sm-3
+    .columns
+      .column.is-3.bg-gradient-dark
+        h1.has-text-uppercase = link_to "#{@manufacturer.name}", '#'
+        span class="flag-icon flag-icon-#{@manufacturer.country}"
+      .column.is-3
         = image_tag "manufacturers/logo/#{@manufacturer.code}.jpg", style: 'width: 99%;'
-      .col-sm-4
-        div.text-left.text-white-50
+      .column.is-4
+        div.has-text-left.has-text-white-50
           div
             small Оф.сайт:
             small &nbsp
@@ -29,7 +29,7 @@ section.text-center
               small Каталог:
               small &nbsp
               small = link_to 'Скачать', @manufacturer.catalog
-    .row
+    .columns
       - @items.each do |item|
-        .col-sm-2
+        .column.is-2
           = link_to item.name, section_category_subcategory_item_path(Section.podvoh, item.subcategory.category.id, item.subcategory.id, item.id), class: 'btn btn-block btn-outline-primary'

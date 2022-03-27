@@ -1,4 +1,4 @@
-h1.text-white-50 = @category.name
+h1.title = @category.name
 
 - @category.subcategories.each do |subcategory|
-  = link_to subcategory.name, section_category_subcategory_path(Section.podvoh, @category.id, subcategory.id), class: 'btn btn-block btn-outline-primary'
+  = link_to subcategory.name, section_category_subcategory_path(Section.podvoh, @category.id, subcategory.id), class: 'button is-info'

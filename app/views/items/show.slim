@@ -1,12 +1,12 @@
-section.text-center.text-white-50
+section.has-text-center.has-text-white-50
   .container
-    .row
-      h4.text-uppercase = @item.name
-    .row
-      .col-sm-8
-        .row
+    .columns
+      h4.has-text-uppercase = @item.name
+    .columns
+      .column.is-8
+        .columns
           - if @sum
-            .col-sm-4
+            .column.is-4
               .info-box.bg-success
                 span.info-box-icon
                   i.far.fa-flag
@@ -17,16 +17,16 @@ section.text-center.text-white-50
                     .progress-bar#sum_percent style=('width: 0%')
                   span.progress-description
                     | -----------------
-          .col-sm-4
+          .column.is-4
             p = link_to 'Убрать фильтр', section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id), class: 'btn btn-block btn-outline-danger'
-        .row
-          .col-sm-4
+        .columns
+          .column.is-4
             - Item::PROPS.each do |prop|
               - property = @item.send(prop)
               - next unless property
-              .text-center
+              .has-text-center
                 .d-flex.h-100
-                  .project-text.w-100.my-auto.text-center class="text-lg-left"
+                  .project-text.w-100.my-auto.has-text-center class="text-lg-left"
                     table.table-sm
                       .btn.btn-block.btn-outline-primary.disabled aria-disabled="true" = property
                       tbody
@@ -42,10 +42,10 @@ section.text-center.text-white-50
                               tr
                                 td = link_to mod.send(prop), section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id, query), class: "btn btn-block btn-#{(params[prop] == mod.send(prop).to_s ? "" : "outline-")}primary"
 
-          .col-sm-4
-            .text-center
+          .column.is-4
+            .has-text-center
               .d-flex.h-100
-                .project-text.w-100.my-auto.text-center class="text-lg-left"
+                .project-text.w-100.my-auto.has-text-center class="text-lg-left"
                   = form_tag '', id: 'parts_form', remote: true
                   - { 'Индивидуально' => @mods_parts, 'Дополнительно' => @item_parts}.each do |key, parts|
                     - if parts.present?
@@ -60,10 +60,10 @@ section.text-center.text-white-50
                                   input.custom-control-input type="checkbox" id="mod_part_#{mod_part.id}" class="manufacturer" data-id="#{mod_part.id}"
                                   label.custom-control-label for="mod_part_#{mod_part.id}"
                                     td
-                                      sup.text-right.text-primary = "+#{mod_part.price} "
+                                      sup.has-text-right.has-text-primary = "+#{mod_part.price} "
                                     td = mod_part.name
 
-      .col-sm-4
+      .column.is-4
         .filter
           = render partial: 'filter'
 

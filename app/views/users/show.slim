@@ -1,16 +1,16 @@
-section.text-center
+section.has-text-center
   .container
-    .row
-      section.text-center
+    .columns
+      section.has-text-center
         .container
-          .row
+          .columns
             - (0..13).each_slice(7) do |part|
               div
                 - part.each do |i|
                   / = link_to i, '#', class: 'faded border bg-image', style: "width: 14%; background-image: url('/assets/podvoh/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg');"
                   = link_to filter_users_path(group: i), method: :post, remote: true, class: 'faded' do
                     = image_tag "podvoh_txt/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg", style: 'width: 14%;', class: 'border bg-image'
-    .row
-      .col-sm-4
+    .columns
+      .column.is-4
         .filter
           = render partial: 'filter'
