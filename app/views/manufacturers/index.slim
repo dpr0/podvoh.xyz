@@ -1,0 +1,25 @@
+nav.breadcrumb aria-label="breadcrumbs"
+  ul
+    - if @category
+      li
+        = link_to @category.name, section_category_path(Section.podvoh, @category.id), class: 'navbar-item'
+    - if @subcategory
+      li.is-active
+        = link_to @subcategory.name, section_category_subcategory_path(Section.podvoh, @category.id, @subcategory.id), class: 'navbar-item'
+
+section.hero.is-info.welcome.is-small
+  .hero-body
+    .container
+      h1.title
+        | Hello, Admin.
+      h2.subtitle
+        | I hope you are having a great day!
+section.info-tiles
+  - @manufacturers.each_slice(4) do |batch|
+    .tile.is-ancestor.has-text-centered
+      - batch.each do |manufacturer|
+        .tile.is-parent
+          article.tile.is-child.box
+            p.subtitle = manufacturer.name
+            p = link_to manufacturer_path(manufacturer.id) do
+              = image_tag "manufacturers/logo/#{manufacturer.code}.jpg"

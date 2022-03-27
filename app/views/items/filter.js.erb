@@ -1,0 +1,3 @@
+$('.filter').html("<%= j render partial: 'filter' %>");
+$('#sum').html("₽<%= @sum %>")
+$('#sum_percent').css({ width: "<%= @sum / 300 %>%" });

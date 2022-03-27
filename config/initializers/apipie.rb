@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Apipie.configure do |config|
-  config.app_name                = 'app_name'
+  config.app_name                = 'podvoh.xyz'
   config.api_base_url            = '/api'
   config.doc_base_url            = '/api/docs'
   # where is your API defined?

@@ -2,11 +2,11 @@
 
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :trackable, :recoverable, :rememberable,
-         :validatable, :omniauthable, omniauth_providers: [:yandex]
-  has_many :access_grants, class_name: 'Doorkeeper::AccessGrant', foreign_key: :resource_owner_id, dependent: :delete_all
-  has_many :access_tokens, class_name: 'Doorkeeper::AccessToken', foreign_key: :resource_owner_id, dependent: :delete_all
+         :validatable, :omniauthable, omniauth_providers: [:firebase, :telegram, :yandex]
   has_many :authorizations, dependent: :destroy
-  has_many :devices, dependent: :destroy
+
+  has_many :modification_users
+  has_many :modifications, through: :modification_users, inverse_of: :users, dependent: :destroy
 
   def self.find_for_oauth(auth)
     authorization = Authorization.where(provider: auth[:provider], uid: auth[:uid]).first

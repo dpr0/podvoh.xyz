@@ -1,0 +1,82 @@
+section.text-center.text-white-50
+  .container
+    .row
+      h4.text-uppercase = @item.name
+    .row
+      .col-sm-8
+        .row
+          - if @sum
+            .col-sm-4
+              .info-box.bg-success
+                span.info-box-icon
+                  i.far.fa-flag
+                .info-box-content
+                  span.info-box-text Цена
+                  span.info-box-number#sum = "₽#{@sum}"
+                  .progress
+                    .progress-bar#sum_percent style=('width: 0%')
+                  span.progress-description
+                    | -----------------
+          .col-sm-4
+            p = link_to 'Убрать фильтр', section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id), class: 'btn btn-block btn-outline-danger'
+        .row
+          .col-sm-4
+            - Item::PROPS.each do |prop|
+              - property = @item.send(prop)
+              - next unless property
+              .text-center
+                .d-flex.h-100
+                  .project-text.w-100.my-auto.text-center class="text-lg-left"
+                    table.table-sm
+                      .btn.btn-block.btn-outline-primary.disabled aria-disabled="true" = property
+                      tbody
+                        - uniq = []
+                        - @grouped_modifications.sort.each do |pr, mods|
+                          - query = {}
+                          - Item::PROPS.each { |p| query[p] = params[p] if params[p] }
+                          - mods.uniq { |x| x.send(prop) }.each do |mod|
+                            - query[prop.to_sym] = mod.send(prop)
+                            - next if uniq.include? mod.send(prop)
+                            - uniq << mod.send(prop)
+                            - if mod.send(prop)
+                              tr
+                                td = link_to mod.send(prop), section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id, query), class: "btn btn-block btn-#{(params[prop] == mod.send(prop).to_s ? "" : "outline-")}primary"
+
+          .col-sm-4
+            .text-center
+              .d-flex.h-100
+                .project-text.w-100.my-auto.text-center class="text-lg-left"
+                  = form_tag '', id: 'parts_form', remote: true
+                  - { 'Индивидуально' => @mods_parts, 'Дополнительно' => @item_parts}.each do |key, parts|
+                    - if parts.present?
+                      table.table-sm
+                        thead = "#{key}:"
+                        tbody
+                        .form-check
+                          - parts.sort.each do |mod_part|
+                            tr
+                              td
+                                .custom-control.custom-checkbox
+                                  input.custom-control-input type="checkbox" id="mod_part_#{mod_part.id}" class="manufacturer" data-id="#{mod_part.id}"
+                                  label.custom-control-label for="mod_part_#{mod_part.id}"
+                                    td
+                                      sup.text-right.text-primary = "+#{mod_part.price} "
+                                    td = mod_part.name
+
+      .col-sm-4
+        .filter
+          = render partial: 'filter'
+
+- url = filter_section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id)
+javascript:
+    $( () => $('.manufacturer').on('change', (checkbox) => {
+        var parts = $("#parts_form input[type='checkbox']").map((i, el) => { if (el.checked) return el.dataset.id });
+        var params = { parts: parts.toArray() };
+        var searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has('prop1')) params.prop1 = searchParams.get('prop1');
+        if (searchParams.has('prop2')) params.prop2 = searchParams.get('prop2');
+        if (searchParams.has('prop3')) params.prop3 = searchParams.get('prop3');
+        $.post("#{url}", params);
+    }));
+
+    $( () => $('.logo').animate({}, 2000) )

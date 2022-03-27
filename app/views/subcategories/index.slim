@@ -1,0 +1,2 @@
+- @subcategories.each do |subcategory|
+  = link_to subcategory.name, section_category_subcategory_path(Section.podvoh, @category.id, subcategory.id), class: 'btn btn-block btn-outline-primary'

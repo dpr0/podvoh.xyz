@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_20_140000) do
+ActiveRecord::Schema.define(version: 2021_02_28_051458) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,125 +19,86 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_20_140000) do
     t.bigint "user_id"
     t.string "provider"
     t.string "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["provider", "uid"], name: "index_authorizations_on_provider_and_uid"
     t.index ["user_id"], name: "index_authorizations_on_user_id"
   end
 
-  create_table "capabilities", force: :cascade do |t|
-    t.integer "device_id"
-    t.boolean "enabled"
-    t.boolean "retrievable"
-    t.string "capability_type"
-    t.string "state"
-    t.string "state_instance"
-    t.integer "state_value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "path"
-    t.integer "pin"
-    t.boolean "status"
-  end
-
-  create_table "device_types", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "code"
     t.string "name"
+    t.integer "section_id"
+    t.string "klass"
   end
 
-  create_table "devices", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.integer "manufacturer_id"
+    t.integer "subcategory_id"
+    t.integer "img_divider", default: 1
+    t.string "prop1"
+    t.string "prop2"
+    t.string "prop3"
+    t.string "part_codes"
+  end
+
+  create_table "manufacturers", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "country"
+    t.string "www"
+    t.string "phone"
+    t.string "email"
+    t.string "address"
+    t.string "catalog"
+  end
+
+  create_table "modification_users", force: :cascade do |t|
+    t.integer "modification_id"
     t.integer "user_id"
-    t.boolean "enabled"
-    t.string "name"
-    t.string "description"
-    t.string "room"
-    t.string "device_type"
-    t.string "manufacturer"
-    t.string "model"
-    t.string "hw_version"
-    t.string "sw_version"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "host"
-    t.integer "port"
-    t.integer "protocol_id"
+    t.integer "section_id"
+    t.integer "category_id"
+    t.integer "subcategory_id"
+    t.integer "item_id"
+    t.boolean "lost"
+    t.datetime "created_at"
+    t.index ["modification_id", "user_id"], name: "index_modification_users_on_modification_id_and_user_id"
+    t.index ["user_id", "modification_id"], name: "index_modification_users_on_user_id_and_modification_id"
   end
 
-  create_table "oauth_access_grants", force: :cascade do |t|
-    t.bigint "resource_owner_id", null: false
-    t.bigint "application_id", null: false
-    t.string "token", null: false
-    t.integer "expires_in", null: false
-    t.text "redirect_uri", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "revoked_at", precision: nil
-    t.string "scopes", default: "", null: false
-    t.index ["application_id"], name: "index_oauth_access_grants_on_application_id"
-    t.index ["resource_owner_id"], name: "index_oauth_access_grants_on_resource_owner_id"
-    t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true
+  create_table "modifications", force: :cascade do |t|
+    t.string "code"
+    t.string "prop1"
+    t.string "prop2"
+    t.string "prop3"
+    t.integer "price"
+    t.integer "item_id"
+    t.string "image_url"
+    t.string "images"
+    t.string "part_codes"
   end
 
-  create_table "oauth_access_tokens", force: :cascade do |t|
-    t.bigint "resource_owner_id"
-    t.bigint "application_id", null: false
-    t.string "token", null: false
-    t.string "refresh_token"
-    t.integer "expires_in"
-    t.datetime "revoked_at", precision: nil
-    t.datetime "created_at", precision: nil, null: false
-    t.string "scopes"
-    t.string "previous_refresh_token", default: "", null: false
-    t.index ["application_id"], name: "index_oauth_access_tokens_on_application_id"
-    t.index ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true
-    t.index ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id"
-    t.index ["token"], name: "index_oauth_access_tokens_on_token", unique: true
-  end
-
-  create_table "oauth_applications", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "uid", null: false
-    t.string "secret", null: false
-    t.text "redirect_uri", null: false
-    t.string "scopes", default: "", null: false
-    t.boolean "confidential", default: true, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
-  end
-
-  create_table "properties", force: :cascade do |t|
-    t.integer "device_id"
-    t.boolean "enabled"
-    t.boolean "retrievable"
-    t.boolean "reportable"
-    t.string "property_type"
-    t.string "parameters_instance"
-    t.string "parameters_value"
-    t.string "parameters_unit"
-    t.string "parameters_events"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "props", force: :cascade do |t|
-    t.integer "device_id"
-    t.boolean "enabled"
-    t.boolean "retrievable"
-    t.boolean "reportable"
-    t.string "prop_type"
-    t.string "parameters_instance"
-    t.string "parameters_unit"
-    t.string "state_instance"
-    t.integer "state_value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "protocols", force: :cascade do |t|
+  create_table "parts", force: :cascade do |t|
     t.string "code"
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "item_id"
+    t.integer "modification_id"
+    t.integer "price"
+    t.string "description"
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+  end
+
+  create_table "subcategories", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.integer "category_id"
+    t.string "klass"
   end
 
   create_table "users", force: :cascade do |t|
@@ -146,21 +108,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_20_140000) do
     t.string "phone"
     t.string "provider"
     t.string "token"
-    t.boolean "admin"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: nil
-    t.datetime "remember_created_at", precision: nil
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at", precision: nil
-    t.datetime "last_sign_in_at", precision: nil
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "authorizations", "users"
-  add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
-  add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
 end

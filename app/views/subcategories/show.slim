@@ -1,0 +1,15 @@
+section.text-center.text-white-50
+  .container
+    .row
+      .col-sm-4
+        h3 Производители
+      .col-sm-4
+        h3 Модели
+    - @manufacturers.each do |manufacturer|
+      p
+        .row
+          .col-sm-4
+            = link_to manufacturer.name, manufacturer_path(manufacturer.id), class: 'btn btn-block btn-outline-primary text-center'
+          .col-sm-4
+            - @items[manufacturer.id].each do |item|
+              = link_to item.name, section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, item.id), class: 'btn btn-block btn-outline-primary'

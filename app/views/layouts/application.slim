@@ -7,28 +7,50 @@ html
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
     = favicon_link_tag asset_path('favicon.png')
 
-    title app_name
+    title podvoh.xyz
     meta charset="utf-8"
-    meta name="yandex-verification" content="b99dd95dd6cc6f01"
+    meta name="yandex-verification" content="b8209de9862994b1"
     meta name="viewport"            content="width=device-width,initial-scale=1"
-    meta name="description"         content="app_name"
+    meta name="description"         content="podvoh.xyz"
     meta name="twitter:card"        content="summary_large_image"
-    meta property="og:url"          content="https://app_name/"
-    meta property="og:site_name"    content="app_name"
+    meta property="og:url"          content="https://podvoh.xyz/"
+    meta property="og:site_name"    content="podvoh.xyz"
     meta property="og:type"         content="website"
-    meta property="og:title"        content="app_name"
+    meta property="og:title"        content="podvoh.xyz"
     meta property="og:locale"       content="ru_RU"
-    meta property="og:description"  content="app_name"
+    meta property="og:description"  content="podvoh.xyz"
     meta property="og:image"        content="#{asset_path('og-image.png')}"
     meta content="IE=edge"          http-equiv="X-UA-Compatible"
-    link rel="canonical"  href="https://app_name"
+    link rel="canonical"  href="https://podvoh.xyz"
     link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&display=swap"
 
   body
     = render 'layouts/header'
-    section.hero.is-lower-alpha#parallax-computers
-      = yield
+    .container
+      .columns
+        .column.is-3
+          aside.menu.is-hidden-mobile
+            p.menu-label
+              | General
+            - Category.eager_load(:subcategories).where(section_id: Section.podvoh).each do |category|
+              ul.menu-list
+                li
+                  a.nav-link class="#{ @category && @category.code != category.code ? '' : 'is-active' }" href="#"
+                    i.nav-icon class="#{category.klass}"
+                    p = category.name
+                  ul
+                    - category.subcategories.each do |subcategory|
+                      li
+                        = link_to section_category_subcategory_path(Section.podvoh, category.id, subcategory.id), class: 'nav-link' do
+                          = subcategory.name
+                          span.right class="#{'badge badge-primary' if @subcategory&.code == subcategory.code }"
+                            i.nav-icon class="#{subcategory.klass}"
+
+
+              / li.nav-item.has-treeview class="#{ @category && @category.code == category.code ? 'menu-open' : '' }"
+        .column.is-9
+          = yield
     = render 'layouts/footer'
 
 javascript:
@@ -39,5 +61,5 @@ javascript:
             k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
         })
         (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-        ym(1000000000, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true});
+        ym(72064657, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true});
     }
