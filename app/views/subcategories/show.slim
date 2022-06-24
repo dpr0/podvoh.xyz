@@ -5,11 +5,15 @@ section.has-text-center.has-text-white-50
         p.title Производители
       .column.is-4
         h3.subtitle Модели
-    - @manufacturers.each do |manufacturer|
-      p
-        .columns
-          .column.is-4
-            = link_to manufacturer.name, manufacturer_path(manufacturer.id), class: 'button is-info'
-          .column.is-4
+    .columns
+      .column.is-4
+        ul
+          - @manufacturers.each do |manufacturer|
+            li
+              = link_to manufacturer.name, manufacturer_path(manufacturer.id)
+      .column.is-4
+        ul
+          - @manufacturers.each do |manufacturer|
             - @items[manufacturer.id].each do |item|
-              = link_to item.name, section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, item.id), class: 'button is-info'
+              li
+                = link_to item.name, section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, item.id)

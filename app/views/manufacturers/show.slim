@@ -1,11 +1,17 @@
 section.has-text-center
   .container
     .columns
-      .column.is-3.bg-gradient-dark
-        h1.has-text-uppercase = link_to "#{@manufacturer.name}", '#'
-        span class="flag-icon flag-icon-#{@manufacturer.country}"
       .column.is-3
-        = image_tag "manufacturers/logo/#{@manufacturer.code}.jpg", style: 'width: 99%;'
+        .card
+          header.card-header
+            p.card-header-title
+              = @manufacturer.name
+            a.card-header-icon aria-label=("more options") href="#"
+              span class="flag-icon flag-icon-#{@manufacturer.country}"
+          .card-content
+            .content style="height: 180px"
+              = link_to manufacturer_path(@manufacturer.id) do
+                = image_tag "manufacturers/logo/#{@manufacturer.code}.jpg", size: '250x250'
       .column.is-4
         div.has-text-left.has-text-white-50
           div
@@ -29,7 +35,7 @@ section.has-text-center
               small Каталог:
               small &nbsp
               small = link_to 'Скачать', @manufacturer.catalog
-    .columns
+    ul
       - @items.each do |item|
-        .column.is-2
-          = link_to item.name, section_category_subcategory_item_path(Section.podvoh, item.subcategory.category.id, item.subcategory.id, item.id), class: 'btn btn-block btn-outline-primary'
+        li
+          = link_to item.name, section_category_subcategory_item_path(Section.podvoh, item.subcategory.category.id, item.subcategory.id, item.id)
