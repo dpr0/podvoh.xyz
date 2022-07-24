@@ -10,8 +10,6 @@
     "esbuild": "^0.14.49",
     "esbuild-plugin-import-glob": "^0.1.1",
     "esbuild-rails": "^1.0.3",
-    "jquery": "^3.6.0",
-    "jquery-ui": "^1.13.2",
     "sass": "^1.54.0"
   },
   "scripts": {

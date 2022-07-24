@@ -12,6 +12,7 @@ class CreateModifications < ActiveRecord::Migration[6.1]
       t.string :image_url
       t.string :images
       t.string :part_codes
+      t.string :text
     end
   end
 end
