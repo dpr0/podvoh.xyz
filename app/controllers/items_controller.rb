@@ -10,7 +10,14 @@ class ItemsController < ApplicationController
   def filter
     @reel = params[:parts]&.include?('1')
     @sum += Part.where(id: params[:parts]).sum(&:price)
-    render layout: false
+    respond_to do |format|
+      format.js do
+        render json: { sum: @sum, reel: @reel }
+      end
+      format.json do
+        render json: { sum: @sum, reel: @reel }
+      end
+    end
   end
 
   private

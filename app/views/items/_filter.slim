@@ -1,21 +1,61 @@
-.columns
-  - @grouped_modifications&.uniq&.each do |prop, mods|
-    - mods.each do |mod|
-      .border
+- @grouped_modifications&.uniq&.each do |prop, mods|
+  - mods.each do |mod|
+    .card
+      .card-content
+        .media
+          .media-left
+            figure.image.is-48x48
+              - if current_user
+                - route = favourite_section_category_subcategory_item_modifications_path(modification_id: mod.id, item_id: @item.id, prop1: params[:prop1], prop2: params[:prop2], prop3: params[:prop3])
+                - if @user_mods&.find_by(id: mod.id)
+                  = link_to route, method: :post do
+                    i.far.fa-star
+                - else
+                  = link_to route, method: :post do
+                    i.fas.fa-star
+          .media-content
+            p.title = "#{@item.name} #{mod.prop1}"
+            p.subtitle = "₽#{mod.price}"
+      .card-image
         - if mod.images
           - mod.images.split(",").map { |z| (!@reel && z.to_i == 19) ? '00' : z.to_i.to_s.rjust(2, "0") }.each_slice(@item.img_divider) do |image_part|
-            div.border-secondary
-              - image_part.each do |i|
-                = link_to "/assets/manufacturers/#{@item.manufacturer.code}/#{@item.code}/image_part_#{i}.jpg" do
-                  = image_tag "manufacturers/#{@item.manufacturer.code}/#{@item.code}/image_part_#{i}.jpg", style: "width: #{ 100 / @item.img_divider }%;", class: 'bordered logo'
+            - image_part.each do |i|
+              = link_to "/assets/manufacturers/#{@item.manufacturer.code}/#{@item.code}/image_part_#{i}.jpg" do
+                = image_tag "manufacturers/#{@item.manufacturer.code}/#{@item.code}/image_part_#{i}.jpg", style: "width: #{ 100 / @item.img_divider }%;", class: 'bordered logo'
         - elsif mod.image_url
           = link_to mod.image_url do
-            = image_tag mod.image_url, style: "width: 100%;", class: 'bordered logo'
+            = image_tag mod.image_url, style: 'width: 100%;', class: 'bordered logo'
 
-        - if current_user
-          - route = favourite_section_category_subcategory_item_modifications_path(modification_id: mod.id, item_id: @item.id, prop1: params[:prop1], prop2: params[:prop2], prop3: params[:prop3])
-          - if @user_mods&.find_by(id: mod.id)
-            = link_to "удалить \"#{@item.name} #{mod.prop1}#{' / ' if mod.prop2}#{mod.prop2}\"", route, method: :post, class: "btn btn-block btn-danger"
-          - else
-            = link_to "добавить в избранное \"#{@item.name} #{mod.prop1}#{' / ' if mod.prop2}#{mod.prop2}\"", route, method: :post, class: "btn btn-block btn-primary"
-      p
+      .card-content
+        .content
+          = mod.text
+
+- url = filter_section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id)
+javascript:
+    function checkboxes() {
+        return document.querySelectorAll('.manufacturer');
+    }
+
+    var myFunction = function (event) {
+        true_checkboxes = Array.prototype.slice.call(checkboxes()).filter(ch => ch.checked);
+        parts = true_checkboxes.map((el, i) => {if (el.checked) return el.dataset.id });
+        params = {parts: parts};
+        searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has('prop1')) params.prop1 = searchParams.get('prop1');
+        if (searchParams.has('prop2')) params.prop2 = searchParams.get('prop2');
+        if (searchParams.has('prop3')) params.prop3 = searchParams.get('prop3');
+        xhr = new XMLHttpRequest();
+        xhr.open("POST", "#{url}");
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader("X-CSRF-Token", document.querySelector('meta[name="csrf-token"]').content);
+        xhr.onload = () => {
+            data = JSON.parse(xhr.response)
+            document.getElementById("sum").innerHTML = `₽${data.sum}`;
+        };
+        xhr.send(JSON.stringify(params));
+    };
+
+    for (var i = 0; i < checkboxes().length; i++) {
+        checkboxes()[i].addEventListener('change', myFunction, false);
+    }

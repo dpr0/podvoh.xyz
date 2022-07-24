@@ -12,10 +12,22 @@ nav.navbar.is-white
     #navMenu.navbar-menu
       .navbar-start
         - unless current_user
-          = link_to 'Войти', new_user_session_path, class: 'navbar-item'
+          .navbar-item
+            = link_to omniauth_authorize_path(:user, :yandex) do
+              = "Войти через "
+              i.fab.fa-yandex-international
+              = "andex"
+          .navbar-item
+            = link_to omniauth_authorize_path(:user, :telegram) do
+              = "Войти через "
+              i.fab.fa-telegram
+              = "Telegram"
         - else
           = link_to user_path(current_user.id), class: 'navbar-item' do
             i.far.fa-user
-          = link_to destroy_user_session_path, class: 'navbar-item', method: :delete do
-            i.fas.fa-sign-out-alt
-          = link_to 'Телеграм-канал "podvoh.xyz"', 'https://t.me/podvoh_xyz', class: 'navbar-item', target: :_blank
+            | &nbsp
+            = current_user.email.present? ? current_user.email : current_user.phone
+          = link_to destroy_user_session_path, class: 'navbar-item', data: { 'turbo-method': :delete } do
+            i.fa-solid.fa-right-from-bracket
+
+          / = link_to 'Телеграм-канал "podvoh.xyz"', 'https://t.me/podvoh_xyz', class: 'navbar-item', target: :_blank
