@@ -77,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2021_02_28_051458) do
     t.string "image_url"
     t.string "images"
     t.string "part_codes"
+    t.string "text"
   end
 
   create_table "parts", force: :cascade do |t|
