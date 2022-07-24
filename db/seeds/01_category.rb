@@ -10,9 +10,9 @@ cat6 = Category.create(code: 'other',    name: 'Другое',              sect
 
 [
 {category_id: cat1.id, code: 'pnevmat',      name: 'Пневматы',             klass: 'fas fa-pen'},
-{category_id: cat1.id, code: 'speargun',     name: 'Арбалеты',             klass: 'fas fa-pen-fancy'},
-{category_id: cat1.id, code: 'shafts',       name: 'Гарпуны',              klass: 'fas fa-long-arrow-alt-right'},
-{category_id: cat1.id, code: 'reels',        name: 'Катушки',              klass: 'fas fa-sync-alt'},
+{category_id: cat1.id, code: 'speargun',     name: 'Арбалеты',             klass: 'fas fa-long-arrow-alt-right'},
+# {category_id: cat1.id, code: 'shafts',       name: 'Гарпуны',              klass: 'fas fa-pen-fancy'},
+# {category_id: cat1.id, code: 'reels',        name: 'Катушки',              klass: 'fas fa-sync-alt'},
 
 {category_id: cat2.id, code: 'wetsuits',     name: 'Гидрокостюмы',         klass: 'fas fa-tshirt'},
 {category_id: cat2.id, code: 'socks',        name: 'Носки',                klass: 'fas fa-socks'},
@@ -27,16 +27,16 @@ cat6 = Category.create(code: 'other',    name: 'Другое',              sect
 {category_id: cat4.id, code: 'belts',        name: 'Ремни, разгрузки',     klass: 'fas fa-vest'},
 {category_id: cat4.id, code: 'belt_weights', name: 'Свинец',               klass: 'fas fa-weight-hanging'},
 {category_id: cat4.id, code: 'knives',       name: 'Ножи',                 klass: 'fab fa-ethereum'},
-{category_id: cat4.id, code: 'hooks',        name: 'Куканы',               klass: 'fab fa-pinterest-p'},
+# {category_id: cat4.id, code: 'hooks',        name: 'Куканы',               klass: 'fab fa-pinterest-p'},
 {category_id: cat4.id, code: 'buoys',        name: 'Буи, плотики',         klass: 'fas fa-ship'},
 
-{category_id: cat5.id, code: 'watch',        name: 'Компьютеры',           klass: 'fab fa-safari'},
+{category_id: cat5.id, code: 'watch',        name: 'Компьютеры/часы',      klass: 'fab fa-safari'},
 {category_id: cat5.id, code: 'video',        name: 'Видеокамеры',          klass: 'fas fa-camera'},
 {category_id: cat5.id, code: 'torches',      name: 'Фонари',               klass: 'fab fa-first-order-alt'},
 
-{category_id: cat6.id, code: 'lines',        name: 'Линь',                 klass: 'fab fa-airbnb'},
-{category_id: cat6.id, code: 'accessories',  name: 'Аксесуары',            klass: 'fas fa-fish'},
-{category_id: cat6.id, code: 'parts',        name: 'Запчасти',             klass: 'fas fa-tools'},
+# {category_id: cat6.id, code: 'lines',        name: 'Линь',                 klass: 'fab fa-airbnb'},
+# {category_id: cat6.id, code: 'accessories',  name: 'Аксесуары',            klass: 'fas fa-fish'},
+# {category_id: cat6.id, code: 'parts',        name: 'Запчасти',             klass: 'fas fa-tools'},
 {category_id: cat6.id, code: 'bags',         name: 'Сумки',                klass: 'fas fa-suitcase'},
 ].each { |hash| Subcategory.create(hash) }
 
