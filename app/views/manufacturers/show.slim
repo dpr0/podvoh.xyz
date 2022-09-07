@@ -8,7 +8,7 @@ section.has-text-center
               = @manufacturer.name
             a.card-header-icon aria-label=("more options") href="#"
               span class="flag-icon flag-icon-#{@manufacturer.country}"
-          .card-content
+          .card-content style="background-color: #{@manufacturer.background_color || :white};"
             .content style="height: 180px"
               = link_to manufacturer_path(@manufacturer.id) do
                 = image_tag "manufacturers/logo/#{@manufacturer.code}.jpg", size: '250x250'
