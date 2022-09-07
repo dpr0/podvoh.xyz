@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2021_02_28_051458) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_222224) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,13 @@ ActiveRecord::Schema[7.0].define(version: 2021_02_28_051458) do
     t.string "email"
     t.string "address"
     t.string "catalog"
+    t.string "background_color"
+  end
+
+  create_table "manufacturers_subcategories", id: false, force: :cascade do |t|
+    t.bigint "manufacturer_id", null: false
+    t.bigint "subcategory_id", null: false
+    t.index ["manufacturer_id", "subcategory_id"], name: "manufacturers_subcategories_index", unique: true
   end
 
   create_table "modification_users", force: :cascade do |t|
@@ -78,6 +85,12 @@ ActiveRecord::Schema[7.0].define(version: 2021_02_28_051458) do
     t.string "images"
     t.string "part_codes"
     t.string "text"
+  end
+
+  create_table "modifications_parts", id: false, force: :cascade do |t|
+    t.bigint "modification_id", null: false
+    t.bigint "part_id", null: false
+    t.index ["modification_id", "part_id"], name: "modifications_parts_index", unique: true
   end
 
   create_table "parts", force: :cascade do |t|

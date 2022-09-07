@@ -7,27 +7,18 @@ nav.breadcrumb aria-label="breadcrumbs"
       li.is-active
         = link_to @subcategory.name, section_category_subcategory_path(Section.podvoh, @category.id, @subcategory.id), class: 'navbar-item'
 
-section.hero.is-info.welcome.is-small
-  .hero-body
-    .container
-      h1.title
-        | Приветствую всех подводных охотников!
-      h2.subtitle
-        | Сайт в разработке
-        span.is-pulled-right = link_to 'Телеграм-канал "podvoh.xyz"', 'https://t.me/podvoh_xyz', target: :_blank
-
 section.is-mobile
   - @manufacturers.each_slice(4) do |batch|
     .columns
       - batch.each do |manufacturer|
         .column.is-3
-          .card
+          .card.has-background-primary-light
             header.card-header
               p.card-header-title
                 = manufacturer.name
               a.card-header-icon aria-label=("more options") href="#"
                 span class="flag-icon flag-icon-#{manufacturer.country}"
-            .card-content
+            .card-content style="background-color: #{manufacturer.background_color || :white};"
               .content style="height: 180px"
                 = link_to manufacturer_path(manufacturer.id) do
                   = image_tag "manufacturers/logo/#{manufacturer.code}.jpg", size: '250x250'

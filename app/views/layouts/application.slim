@@ -10,7 +10,7 @@ html
     title podvoh.xyz
     meta charset="utf-8"
     meta name="yandex-verification" content="b8209de9862994b1"
-    meta name="viewport"            content="width=device-width,initial-scale=1"
+    / meta name="viewport"            content="width=device-width,initial-scale=1"
     meta name="description"         content="podvoh.xyz"
     meta name="twitter:card"        content="summary_large_image"
     meta property="og:url"          content="https://podvoh.xyz/"
@@ -27,33 +27,40 @@ html
 
   body
     = render 'layouts/header'
-    .container
-      .columns
-        .column.is-3
-          aside.menu.is-hidden-mobile
-            p.menu-label
-              | General
-            - Category.eager_load(:subcategories).where(section_id: Section.podvoh).each do |category|
-              ul.menu-list
-                li
-                  a.nav-link class="#{ @category && @category.code != category.code ? '' : 'is-active' }" href="#"
-                    i.nav-icon class="#{category.klass}"
-                    p = category.name
-                  ul
-                    - category.subcategories.each do |subcategory|
-                      li
-                        = link_to section_category_subcategory_path(Section.podvoh, category.id, subcategory.id), class: 'nav-link' do
-                          = subcategory.name
-                          span.right class="#{'badge badge-primary' if @subcategory&.code == subcategory.code }"
-                            i.nav-icon class="#{subcategory.klass}"
+    section.section
+      .container
+        .columns
+          .column.is-3
+            aside.is-medium.menu
+              - Category.eager_load(:subcategories).where(section_id: Section.podvoh).each do |category|
+                p.menu-label
+                  i.nav-icon class="#{category.klass}"
+                  | &nbsp
+                  = category.name
+                ul.menu-list
+                  - category.subcategories.each do |subcategory|
+                    li
+                      = link_to section_category_subcategory_path(Section.podvoh, category.id, subcategory.id), class: 'nav-link' do
+                        i.nav-icon class="#{subcategory.klass}"
+                        | &nbsp
+                        = subcategory.name
 
 
-              / li.nav-item.has-treeview class="#{ @category && @category.code == category.code ? 'menu-open' : '' }"
-        .column.is-9
-          = yield
+                / li.nav-item.has-treeview class="#{ @category && @category.code == category.code ? 'menu-open' : '' }"
+          .column.is-9
+            = yield
     = render 'layouts/footer'
 
 javascript:
+    (function () {
+        var burger = document.querySelector('.burger');
+        var menu = document.querySelector('#' + burger.dataset.target);
+        burger.addEventListener('click', function () {
+            burger.classList.toggle('is-active');
+            menu.classList.toggle('is-active');
+        });
+    })();
+
     if ("#{Rails.env}" == 'production') {
         (function (m, e, t, r, i, k, a) {
             m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
