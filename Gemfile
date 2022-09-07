@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
-gem 'apipie-rails'
 gem 'bootsnap', require: false
 gem 'cocoon'
 gem 'cssbundling-rails'
@@ -24,6 +23,9 @@ gem 'redis'
 gem 'rest-client'
 gem 'slim-rails'
 gem 'stimulus-rails'
+gem 'trestle'
+gem 'trestle-auth'
+gem 'trestle-search'
 gem 'turbo-rails'
 gem 'whenever', require: false
 

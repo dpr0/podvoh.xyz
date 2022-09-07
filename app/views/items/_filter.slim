@@ -8,11 +8,11 @@
               - if current_user
                 - route = favourite_section_category_subcategory_item_modifications_path(modification_id: mod.id, item_id: @item.id, prop1: params[:prop1], prop2: params[:prop2], prop3: params[:prop3])
                 - if @user_mods&.find_by(id: mod.id)
-                  = link_to route, method: :post do
-                    i.far.fa-star
-                - else
-                  = link_to route, method: :post do
+                  = link_to route, data: { 'turbo-method': :post } do
                     i.fas.fa-star
+                - else
+                  = link_to route, data: { 'turbo-method': :post } do
+                    i.far.fa-star
           .media-content
             p.title = "#{@item.name} #{mod.prop1}"
             p.subtitle = "₽#{mod.price}"

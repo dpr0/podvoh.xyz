@@ -108,6 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2021_02_28_051458) do
     t.string "phone"
     t.string "provider"
     t.string "token"
+    t.string "role"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at", precision: nil

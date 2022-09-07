@@ -8,6 +8,23 @@ class User < ApplicationRecord
   has_many :modification_users
   has_many :modifications, through: :modification_users, inverse_of: :users, dependent: :destroy
 
+  # include Trestle::Auth::ModelMethods
+  # include Trestle::Auth::ModelMethods::Rememberable
+  #
+  # # Prevent demo user from being modified
+  # validate on: :update do
+  #   errors.add(:email, 'Cannot change login details for demo user') if not_admin? && email_changed?
+  #   errors.add(:password, 'Cannot change login details for demo user') if not_admin? && password_digest_changed?
+  # end
+  #
+  # before_destroy if: :not_admin? do
+  #   throw(:abort)
+  # end
+  #
+  # def not_admin?
+  #   role_was != 'super'
+  # end
+
   def self.find_for_oauth(auth)
     authorization = Authorization.where(provider: auth[:provider], uid: auth[:uid]).first
     return authorization.user if authorization
