@@ -213,6 +213,8 @@ GEM
     omniauth-oauth2 (1.7.3)
       oauth2 (>= 1.4, < 3)
       omniauth (>= 1.9, < 3)
+    omniauth-telegram (0.2.1)
+      omniauth (>= 1.0)
     omniauth-yandex (0.0.2)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
@@ -384,6 +386,7 @@ DEPENDENCIES
   jwt
   listen
   omniauth
+  omniauth-telegram
   omniauth-yandex
   pg
   propshaft
