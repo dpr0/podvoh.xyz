@@ -8,5 +8,7 @@ class ManufacturersController < ApplicationController
   def show
     @manufacturer = Manufacturer.find(params[:id])
     @items = @manufacturer.items
+    @subcategory = Subcategory.cached_by_id[@manufacturer.subcategories.first.id]
+    @category = @subcategory.category
   end
 end

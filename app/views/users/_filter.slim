@@ -4,4 +4,4 @@
       - mods = @user_mods.where(item_id: item.id)
       b.has-text-white-50 = item.subcategory.name
       - mods.each do |mod|
-        .has-text-sm-left = link_to "#{item.manufacturer.name} #{item.name} #{mod.prop1}#{' / ' if mod.prop2}#{mod.prop2}", section_category_subcategory_item_path(Section.podvoh, item.subcategory.category.id, item.subcategory.id, item.id)
+        .has-text-sm-left = link_to "#{item.manufacturer.name} #{item.name} #{mod.prop1}#{' / ' if mod.prop2}#{mod.prop2}", section_category_subcategory_manufacturer_item_path(Section.podvoh, item.subcategory.category.id, item.subcategory.id, item.manufacturer.id, item.id)

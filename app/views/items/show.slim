@@ -1,7 +1,7 @@
 section.has-text-center.has-text-white-50
   .container
     h1.title#sum = "₽#{@sum}"
-    p = link_to 'Убрать фильтр', section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id), class: 'btn btn-block btn-outline-danger'
+    p = link_to 'Убрать фильтр', section_category_subcategory_manufacturer_item_path(Section.podvoh, @category.id, @subcategory.id, @item.manufacturer.id, @item.id), class: 'btn btn-block btn-outline-danger'
     .columns
       .column.is-6
         .columns
@@ -26,7 +26,7 @@ section.has-text-center.has-text-white-50
                             - uniq << m
                             - if m
                               tr
-                                td = link_to m, section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, @item.id, query), class: "btn btn-block btn-#{(params[prop] == m.to_s ? "" : "outline-")}primary"
+                                td = link_to m, section_category_subcategory_manufacturer_item_path(Section.podvoh, @category.id, @subcategory.id, @item.manufacturer.id, @item.id, query), class: "btn btn-block btn-#{(params[prop] == m.to_s ? "" : "outline-")}primary"
 
           .column.is-4
             .has-text-center

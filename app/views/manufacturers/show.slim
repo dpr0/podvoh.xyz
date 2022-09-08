@@ -8,7 +8,7 @@ section.has-text-center
               = @manufacturer.name
             a.card-header-icon aria-label=("more options") href="#"
               span class="flag-icon flag-icon-#{@manufacturer.country}"
-          .card-content style="background-color: #{@manufacturer.background_color || :white};"
+          .card-content style="background-color: #{@manufacturer.background_color};"
             .content style="height: 180px"
               = link_to manufacturer_path(@manufacturer.id) do
                 = image_tag "manufacturers/logo/#{@manufacturer.code}.jpg", size: '250x250'
@@ -38,4 +38,4 @@ section.has-text-center
     ul
       - @items.each do |item|
         li
-          = link_to item.name, section_category_subcategory_item_path(Section.podvoh, item.subcategory.category.id, item.subcategory.id, item.id)
+          = link_to item.name, section_category_subcategory_manufacturer_item_path(Section.podvoh, item.subcategory.category.id, item.subcategory.id, item.manufacturer.id, item.id)

@@ -1,10 +1,9 @@
 section.has-text-center.has-text-white-50
   .container
     .columns
-      .column.is-4
-        p.title Производители
-      .column.is-4
-        h3.subtitle Модели
+      .column.is-6
+        h2.subtitle
+          = @subcategory.name
     .columns
       - @manufacturers.each do |manufacturer|
         .column.is-4
@@ -14,11 +13,11 @@ section.has-text-center.has-text-white-50
                 = manufacturer.name
               a.card-header-icon aria-label=("more options") href="#"
                 span class="flag-icon flag-icon-#{manufacturer.country}"
-            .card-content
+            .card-content style="background-color: #{manufacturer.background_color};"
               .content style="height: 180px"
                 = link_to manufacturer_path(manufacturer.id) do
                   = image_tag "manufacturers/logo/#{manufacturer.code}.jpg", width: 250
               ul
                 - @items[manufacturer.id].each do |item|
                   li
-                    = link_to item.name, section_category_subcategory_item_path(Section.podvoh, @category.id, @subcategory.id, item.id)
+                    = link_to item.name, section_category_subcategory_manufacturer_item_path(Section.podvoh, @category.id, @subcategory.id, manufacturer.id, item.id)

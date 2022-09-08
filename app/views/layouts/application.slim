@@ -48,6 +48,20 @@ html
 
                 / li.nav-item.has-treeview class="#{ @category && @category.code == category.code ? 'menu-open' : '' }"
           .column.is-9
+            nav.breadcrumb aria-label="breadcrumbs"
+              ul
+                - if @category
+                  li class="#{'is-active' unless @subcategory}"
+                    = link_to @category.name, section_category_path(Section.podvoh, @category.id), class: 'navbar-item'
+                - if @subcategory
+                  li class="#{'is-active' unless @manufacturer}"
+                    = link_to @subcategory.name, section_category_subcategory_path(Section.podvoh, @category.id, @subcategory.id), class: 'navbar-item'
+                - if @manufacturer
+                  li class="#{'is-active' unless @item}"
+                    = link_to @manufacturer.name, section_category_subcategory_manufacturer_path(Section.podvoh, @category.id, @subcategory.id, @manufacturer.id), class: 'navbar-item'
+                - if @item
+                  li.is-active
+                    = link_to @item.name, section_category_subcategory_manufacturer_item_path(Section.podvoh, @category.id, @subcategory.id, @manufacturer.id, @item.id), class: 'navbar-item'
             = yield
     = render 'layouts/footer'
 

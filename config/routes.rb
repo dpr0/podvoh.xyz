@@ -12,11 +12,13 @@ Rails.application.routes.draw do
   resources :sections do
     resources :categories do
       resources :subcategories do
-        resources :items do
-          resources :modifications do
-            post :favourite, on: :collection
+        resources :manufacturers do
+          resources :items do
+            resources :modifications do
+              post :favourite, on: :collection
+            end
+            post :filter, on: :member
           end
-          post :filter, on: :member
         end
       end
     end
