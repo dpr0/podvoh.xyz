@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
     post :filter, on: :collection
   end
-  resources :manufacturers
+  resources :manufacturers do
+    post :filter, on: :collection
+  end
 
   resources :sections do
     resources :categories do

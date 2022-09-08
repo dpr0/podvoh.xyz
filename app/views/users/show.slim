@@ -8,7 +8,7 @@ section.has-text-center
               div
                 - part.each do |i|
                   / = link_to i, '#', class: 'faded border bg-image', style: "width: 14%; background-image: url('/assets/podvoh/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg');"
-                  = link_to filter_users_path(group: i), method: :post, remote: true, class: 'faded' do
+                  = link_to filter_users_path(group: i), data: { 'turbo-method': :post }, remote: true, class: 'faded' do
                     = image_tag "podvoh_txt/image_part_#{(i+1).to_s.rjust(3, "0")}.jpg", style: 'width: 14%;', class: 'border bg-image'
     .columns
       .column.is-4

@@ -1,15 +1,13 @@
 section.is-mobile
-  - @manufacturers.each_slice(4) do |batch|
-    .columns
-      - batch.each do |manufacturer|
-        .column.is-3
-          .card.has-background-primary-light
-            header.card-header
-              p.card-header-title
-                span style="white-space: nowrap;" = manufacturer.name
-              a.card-header-icon
-                span class="flag-icon flag-icon-#{manufacturer.country}"
-            .card-content style="background-color: #{manufacturer.background_color};"
-              .content style="height: 100px"
-                = link_to manufacturer_path(manufacturer.id) do
-                  = image_tag "manufacturers/logo/#{manufacturer.code}.jpg", size: '250x250'
+  .columns
+    .column.is-12
+      - @manufacturers.map(&:country).uniq.sort.each do |flag|
+        = link_to filter_manufacturers_path(flag: flag), data: { 'turbo-method': :post } do
+          - if flag.present?
+            span class="flag-icon flag-icon-#{flag}" alt="#{flag}"
+          - else
+            span Без флага
+        | &nbsp
+section
+  .filter
+    = render partial: 'filter'

@@ -56,10 +56,10 @@ html
                 - if @subcategory
                   li class="#{'is-active' unless @manufacturer}"
                     = link_to @subcategory.name, section_category_subcategory_path(Section.podvoh, @category.id, @subcategory.id), class: 'navbar-item'
-                - if @manufacturer
+                - if @manufacturer && @category && @subcategory
                   li class="#{'is-active' unless @item}"
                     = link_to @manufacturer.name, section_category_subcategory_manufacturer_path(Section.podvoh, @category.id, @subcategory.id, @manufacturer.id), class: 'navbar-item'
-                - if @item
+                - if @item && @category && @subcategory
                   li.is-active
                     = link_to @item.name, section_category_subcategory_manufacturer_item_path(Section.podvoh, @category.id, @subcategory.id, @manufacturer.id, @item.id), class: 'navbar-item'
             = yield
