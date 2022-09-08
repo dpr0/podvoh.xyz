@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Trestle.resource(:modification_users) do
   menu do
-    item :modification_users, icon: "fa fa-star"
+    item :modification_users, icon: 'fa fa-star'
   end
 
   # Customize the table columns shown on the index view.

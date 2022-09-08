@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Trestle.configure do |config|
   # == Customization Options
   #
@@ -22,7 +24,7 @@ Trestle.configure do |config|
   # Set the text shown in the page footer within the admin.
   # Defaults to 'Powered by Trestle'.
   #
-  config.footer = "Powered by Trestle"
+  config.footer = 'Powered by Trestle'
 
   # Sets the default precision for timestamps (either :minutes or :seconds).
   # Defaults to :minutes.
@@ -147,7 +149,7 @@ Trestle.configure do |config|
 
   # Specify the Trestle admin for managing the current user (My Account).
   #
-  config.auth.user_admin = -> { :"auth/account" }
+  config.auth.user_admin = -> { :'auth/account' }
 
   # Specify the parameter (along with a password) to be used to
   # authenticate an administrator. Defaults to :email if not specified below.
@@ -188,8 +190,9 @@ Trestle.configure do |config|
   # Specify the redirect location after a successful login.
   # Defaults to the main Trestle admin path.
   #
-  config.auth.redirect_on_login = -> {
-    if admin = Trestle.lookup(Trestle.config.auth.user_admin)
+  config.auth.redirect_on_login = lambda {
+    admin = Trestle.lookup(Trestle.config.auth.user_admin)
+    if admin
       admin.instance_path(current_user)
     else
       Trestle.config.path

@@ -17,6 +17,7 @@ class ModificationsController < ApplicationController
         item_id:         params[:item_id]
       )
     end
-    redirect_to section_category_subcategory_manufacturer_item_path(params[:section_id], params[:category_id], params[:subcategory_id], params[:manufacturer_id], params[:item_id], {prop1: params[:prop1], prop2: params[:prop2], prop3: params[:pro3]})
+    redirect_to section_category_subcategory_manufacturer_item_path(params[:section_id], params[:category_id], params[:subcategory_id], params[:manufacturer_id], params[:item_id],
+                                                                    { prop1: params[:prop1], prop2: params[:prop2], prop3: params[:pro3] })
   end
 end

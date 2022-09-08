@@ -1,6 +1,22 @@
-Layout/ExtraSpacing:
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+Security/JSONLoad:
   Exclude:
-    - 'Gemfile'
+    - 'app/models/common.rb'
+
+Style/NumericLiterals:
+  Exclude:
+    - 'db/schema.rb'
+
+StringLiterals:
+  Exclude:
+    - 'db/schema.rb'
+    - 'config/schedule.rb'
+
+Layout/ExtraSpacing:
+  Enabled: false
 
 Layout/FirstHashElementIndentation:
   Exclude:
@@ -9,12 +25,7 @@ Layout/FirstHashElementIndentation:
     - 'config/deploy.rb'
 
 Layout/HashAlignment:
-  Exclude:
-    - 'app/controllers/callbacks_controller.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/models/common.rb'
-    - 'config/environments/development.rb'
-    - 'config/environments/production.rb'
+  Enabled: false
 
 Lint/EmptyFile:
   Exclude:
@@ -59,7 +70,10 @@ Style/WordArray:
   MinSize: 5
 
 Layout/LineLength:
-  Max: 198
+  Max: 200
+  Exclude:
+    - 'db/seeds/01_category.rb'
+    - 'db/seeds/02_items.rb'
 
 Style/GuardClause:
   Exclude:

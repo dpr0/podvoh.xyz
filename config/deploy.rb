@@ -2,7 +2,7 @@
 
 lock '3.17.1'
 
-server 'podvoh.xyz', port: 2222, roles: %w(app db web), primary: true
+server 'podvoh.xyz', port: 2222, roles: %w[app db web], primary: true
 
 set :rbenv_ruby,      '3.0.3'
 set :application,     'podvoh.xyz'

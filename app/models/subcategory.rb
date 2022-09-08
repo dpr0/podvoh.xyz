@@ -7,7 +7,7 @@ class Subcategory < ApplicationRecord
   belongs_to :category
 
   USER_GROUPS = {
-      'ласты'    => :fins,
+    'ласты' => :fins,
       'носки'    => :socks,
       'костюмы'  => :wetsuits,
       'маски'    => :mask,

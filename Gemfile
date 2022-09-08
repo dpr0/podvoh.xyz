@@ -14,8 +14,8 @@ gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'jwt'
 gem 'omniauth'
-gem 'omniauth-yandex'
 gem 'omniauth-telegram'
+gem 'omniauth-yandex'
 gem 'pg'
 # gem 'propshaft'
 gem 'puma', '4.3.10'
@@ -32,8 +32,8 @@ gem 'whenever', require: false
 
 group :development do
   gem 'bcrypt_pbkdf'
-  gem 'capistrano3-puma', '4.0.0', require: false
   gem 'capistrano',         require: false
+  gem 'capistrano3-puma', '4.0.0', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-nvm',     require: false
   gem 'capistrano-rails',   require: false

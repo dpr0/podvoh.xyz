@@ -271,8 +271,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :yandex, ENV['YA_AUTH_APP_ID'], ENV['YA_AUTH_SECRET']
-  config.omniauth :telegram, ENV['BOT_NAME'], ENV['BOT_TOKEN']
+  config.omniauth :yandex, ENV.fetch('YA_AUTH_APP_ID', nil), ENV.fetch('YA_AUTH_SECRET', nil)
+  config.omniauth :telegram, ENV.fetch('BOT_NAME', nil), ENV.fetch('BOT_TOKEN', nil)
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

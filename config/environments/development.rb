@@ -44,12 +44,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default charset: 'utf-8'
-  config.action_mailer.default_url_options = { host: ENV['HOST'] }
+  config.action_mailer.default_url_options = { host: ENV.fetch('HOST', nil) }
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    user_name:            "#{ENV['GMAIL_USER']}@gmail.com",
-    password:             ENV['GMAIL_PASSWORD'],
+    user_name:            "#{ENV.fetch('GMAIL_USER', nil)}@gmail.com",
+    password:             ENV.fetch('GMAIL_PASSWORD', nil),
     authentication:       :plain,
     enable_starttls_auto: true
   }
