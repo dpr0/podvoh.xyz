@@ -1,0 +1,5 @@
+section.has-text-center.has-text-white-50
+  .container
+    - @items.each do |item|
+      p = link_to "Редактировать \"#{item.name}\"", edit_section_category_subcategory_manufacturer_item_path(id: item.id,
+              section_id: params[:section_id], category_id: params[:category_id], subcategory_id: params[:subcategory_id], manufacturer_id: params[:manufacturer_id])

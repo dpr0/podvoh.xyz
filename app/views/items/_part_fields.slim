@@ -1,0 +1,17 @@
+= f.hidden_field :id
+.card.has-background-primary-light
+  header.card-header
+    p.card-header-title
+      | Наименование
+      | &nbsp
+      = f.text_field :name, class: 'control input'
+      | &nbsp
+      | Цена
+      | &nbsp
+      = f.number_field :price, class: 'control input'
+    = link_to_remove_association 'X', f, class: 'button is-small is-danger'
+  .card-content style="background-color: #fefefe;"
+    .content style="height: 100px"
+      .field
+        = f.label :description, 'Описание', class: 'label'
+        = f.text_field :description, class: 'control input'

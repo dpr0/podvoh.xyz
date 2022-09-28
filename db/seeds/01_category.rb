@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 section = Section.create(code: 'podvoh', name: 'Подводная охота')
-cat1 = Category.create(code: 'weapon',   name: 'Оружие',              section_id: section.id, klass: 'fas fa-crosshairs')
-cat2 = Category.create(code: 'clothes',  name: 'Неопрен',             section_id: section.id, klass: 'fas fa-tshirt')
+cat1 = Category.create(code: 'weapon',   name: 'Оружие',               section_id: section.id, klass: 'fas fa-crosshairs')
+cat2 = Category.create(code: 'clothes',  name: 'Неопрен',              section_id: section.id, klass: 'fas fa-tshirt')
 cat3 = Category.create(code: 'fins',     name: 'Ласты, маски, трубки', section_id: section.id, klass: 'fas fa-swimmer')
-cat4 = Category.create(code: 'special',  name: 'Снаряжение',          section_id: section.id, klass: 'fas fa-user-cog')
-cat5 = Category.create(code: 'gadgets',  name: 'Гаджеты',             section_id: section.id, klass: 'fas fa-camera-retro')
-cat6 = Category.create(code: 'other',    name: 'Другое',              section_id: section.id, klass: 'fas fa-toolbox')
+cat4 = Category.create(code: 'special',  name: 'Снаряжение',           section_id: section.id, klass: 'fas fa-user-cog')
+cat5 = Category.create(code: 'gadgets',  name: 'Гаджеты',              section_id: section.id, klass: 'fas fa-camera-retro')
+cat6 = Category.create(code: 'other',    name: 'Другое',               section_id: section.id, klass: 'fas fa-toolbox')
 
 [
   { category_id: cat1.id, code: 'pnevmat',      name: 'Пневматы',             klass: 'fas fa-pen' },
@@ -42,27 +42,27 @@ cat6 = Category.create(code: 'other',    name: 'Другое',              sect
 
 [
   { code: 'abysstar',     name: 'Abysstar',     country: 'it', www: 'sportfishingparisi.com',     background_color: '#ffffff', catalog: 'https://www.sportfishingparisi.com/catalogo-abysstar/', phone: '0831380571',    email: 'info@abysstar.com',    address: 'Via Degli Emigranti z.i. s.n. – 72013 ceglie Messapica – Brindisi' },
-  { code: 'aeris',        name: 'Aeris',        country: '',   www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
+  { code: 'aeris',        name: 'Aeris',        country: 'us', www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
   { code: 'akvilon',      name: 'Akvilon',      country: '',   www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
   { code: 'alpinasub',    name: 'РПП',          country: 'ru', www: 'alpinasub.ru',               background_color: '#ffffff', catalog: '', phone: '+79870746665',    email: 'info@alpinasub.ru',    address: 'г.Пенза' },
-  { code: 'aqua_sphere',  name: 'Aqua Sphere',  country: 'it', www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
-  { code: 'aquadiscovery', name: 'Aquadiscovery', country: 'ru', www: 'aquadiscoveryint.com',       background_color: '#ffffff', catalog: '', phone: '+78632643232',    email: 'aquasub@aquasub.ru',    address: 'Ростов-на-Дону, ул.Красноармейская, 101' },
+  { code: 'aqua_sphere',  name: 'Aqua Sphere',  country: 'it', www: '',                           background_color: '#eeeeee', catalog: '', phone: '',    email: '',    address: '' },
+  { code: 'aquadiscovery',name: 'Aquadiscovery',country: 'ru', www: 'aquadiscoveryint.com',       background_color: '#eeeeee', catalog: '', phone: '+78632643232',    email: 'aquasub@aquasub.ru',    address: 'Ростов-на-Дону, ул.Красноармейская, 101' },
   { code: 'aqualung',     name: 'Aqualung',     country: 'fr', www: 'aqualung.com',               background_color: '#ffffff', catalog: 'https://issuu.com/edunascimento76/docs/aqua_lung_buyers_guide_2021', phone: '',    email: '',    address: '' },
   { code: 'bare',         name: 'Bare',         country: 'ca', www: 'baresports.com',             background_color: '#ffffff', catalog: '', phone: '8882708595',    email: 'tac@huishoutdoors.com',    address: '' },
   { code: 'beuchat',      name: 'Beuchat',      country: 'fr', www: 'beuchat-diving.com',         background_color: '#ffffff', catalog: 'https://www.beuchat-diving.com/img/cms/Catalogues/2021_BEUCHAT_Spearfishing_Catalog_FR-EN.pdf', phone: '',    email: '',    address: '' },
   { code: 'bs_diver',     name: 'BS DIVER',     country: 'ua', www: '',                           background_color: '#000000', catalog: '', phone: '',    email: '',    address: '' },
-  { code: 'cetma',        name: 'Cetma',        country: 'it', www: 'cetmacomposites.it',         background_color: '#ffffff', catalog: '', phone: '+393479025799',    email: 'info@cetmacomposites.it',    address: 'C/O Cittadella della Ricerca S.S.7 Appla Km.706+030 72100 Brindisi' },
+  { code: 'cetma',        name: 'Cetma',        country: 'it', www: 'cetmacomposites.it',         background_color: '#252525', catalog: '', phone: '+393479025799',    email: 'info@cetmacomposites.it',    address: 'C/O Cittadella della Ricerca S.S.7 Appla Km.706+030 72100 Brindisi' },
   { code: 'c4',           name: 'C4',           country: 'it', www: 'c4carbon.com',               background_color: '#ff3801', catalog: 'https://drive.google.com/file/d/1GcewpqLiTOP9P0kYXJ0f9Ft2qjb8Q3RB/view', phone: '+3903621573081',    email: 'infosales@c4carbon.com',    address: 'Via Cesare Battisti, 40, 20847 Albiate' },
   { code: 'cressi',       name: 'Cressi',       country: 'it', www: 'cressi.com',                 background_color: '#ffffff', catalog: 'https://www.cressi.com/easyup/2021catalog/CRESSI-BG2021.pdf', phone: '',    email: '',    address: '' },
   { code: 'ferei',        name: 'Ferei',        country: 'cn', www: 'ferei.com',                  background_color: '#ffffff', catalog: '', phone: '0086-755-84807942',    email: 'ferei@ferei.com',    address: 'No.402, Building B, No.60, Xiakeng 2nd Rd, Tongde Community, Baolong Street, Longgang District, Shenzhen ,518116' },
   { code: 'garmin',       name: 'Garmin',       country: 'us', www: 'garmin.ru',                  background_color: '#ffffff', catalog: '', phone: '+74959613827',    email: '',    address: 'Москва, 3-й Угрешский пр-д, д.8, стр. 3, 13' },
   { code: 'gopro',        name: 'GoPro',        country: 'us', www: 'gopro.com',                  background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
   { code: 'hollis',       name: 'Hollis',       country: 'us', www: 'hollis.com',                 background_color: '#ffffff', catalog: '', phone: '8882708595',    email: 'tac@huishoutdoors.com',    address: '' },
-  { code: 'hydra',        name: 'Hydra',        country: 'lu', www: 'hydra-sport.com',            background_color: '#ffffff', catalog: '', phone: '+37125141045',    email: 'info@hydra-sport.com',    address: '20, Avenue de la Porte Neuve, L-2227' },
+  { code: 'hydra',        name: 'Hydra',        country: 'lu', www: 'hydra-sport.com',            background_color: '#eeeeee', catalog: '', phone: '+37125141045',    email: 'info@hydra-sport.com',    address: '20, Avenue de la Porte Neuve, L-2227' },
   { code: 'imersion',     name: 'Imersion',     country: 'fr', www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
-  { code: 'kayuk',        name: 'Каюк',         country: 'by', www: 'kayuk.by',                   background_color: '#ffffff', catalog: '', phone: '+375296443303',    email: 'info@kayuk.by',    address: 'Минск, ул.Л.Беды, д. 31, кв. 119' },
+  { code: 'kayuk',        name: 'Каюк',         country: 'by', www: 'kayuk.by',                   background_color: '#252525', catalog: '', phone: '+375296443303',    email: 'info@kayuk.by',    address: 'Минск, ул.Л.Беды, д. 31, кв. 119' },
   { code: 'kf',           name: 'KF',           country: 'ru', www: 'kf-fish.ru',                 background_color: '#3a3a3a', catalog: '', phone: '+79118107579',    email: 'info@kf-fish.ru',    address: 'г.Шлиссельбург, ул.Пролетарская, 22' },
-  { code: 'leaderfins',   name: 'Leaderfins',   country: '',   www: 'leaderfins.com',             background_color: '#2b292a', catalog: '', phone: '',    email: '',    address: '' },
+  { code: 'leaderfins',   name: 'Leaderfins',   country: 'es', www: 'leaderfins.com',             background_color: '#2b292a', catalog: '', phone: '',    email: '',    address: '' },
   { code: 'mares',        name: 'mares',        country: 'it', www: 'mares.com',                  background_color: '#ffffff', catalog: 'https://media.head.com/_11__/documents/DL/384048-hde0ohi2y2o0s0ww', phone: '+3901852011',    email: '',    address: 'Salita Bonsen 4 P.O. Box 142 16035 Rapallo (Genova) ' },
   { code: 'marlin',       name: 'Marlin',       country: '',   www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
   { code: 'molchanovs',   name: 'Molchanovs',   country: 'ru', www: 'molchanovs.com',             background_color: '#001335', catalog: '', phone: '',    email: 'info@molchanovs.com',    address: 'Щёлковское ш., 3с1, Москва, 105122' },
@@ -72,26 +72,26 @@ cat6 = Category.create(code: 'other',    name: 'Другое',              sect
   { code: 'pathos',       name: 'Pathos',       country: 'gr', www: 'pathossub.com',              background_color: '#ffffff', catalog: '', phone: '',    email: 'info@pathossub.com',    address: '' },
   { code: 'pelengas',     name: 'Pelengas',     country: 'ua', www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
   { code: 'picasso',      name: 'Picasso',      country: '',   www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
-  { code: 'riffe',        name: 'Riffe',        country: 'us', www: 'speargun.com',               background_color: '#ffffff', catalog: '', phone: '',    email: 'info@speargun.com',    address: '1214 Puerta Del Sol San Clemente, CA 92673' },
+  { code: 'riffe',        name: 'Riffe',        country: 'us', www: 'speargun.com',               background_color: '#e5e5e5', catalog: '', phone: '',    email: 'info@speargun.com',    address: '1214 Puerta Del Sol San Clemente, CA 92673' },
   { code: 'rob_allen',    name: 'Rob Allen',    country: 'za', www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
   { code: 'salvimar',     name: 'Salvimar',     country: 'it', www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
-  { code: 'sargan',       name: 'Sargan',       country: '',   www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
+  { code: 'sargan',       name: 'Sargan',       country: 'ru', www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
   { code: 'scorpena',     name: 'Scorpena',     country: 'ru', www: 'scorpena.ru',                background_color: '#ffffff', catalog: '', phone: '+79219524948',    email: 'scorpena@scorpena.ru"',    address: '' },
-  { code: 'scubapro',     name: 'Scubapro',     country: '',   www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
+  { code: 'scubapro',     name: 'Scubapro',     country: 'us', www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
   { code: 'seac_sub',     name: 'Seac Sub',     country: 'it', www: 'seacsub.com',                background_color: '#000000', catalog: 'https://seacsub.com/catalogs_2021/SEAC_2021_Catalogue_100dpi.pdf', phone: '+390185356301',    email: 'seacsub@seacsub.com',    address: 'Via Domenico Norero, 29 San Colombano Certenoli 16040 (GE)' },
   { code: 'speardiver',   name: 'SpearDiver',   country: '',   www: 'speardiver.com',             background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
   { code: 'spetton',      name: 'Spetton',      country: 'es', www: 'spetton.com',                background_color: '#ffffff', catalog: 'https://spetton.com/wp-content/uploads/2021/01/spetton%202021%20OK%20FINAL%20V4%20baja.pdf', phone: '+34961595260',    email: 'spetton@spetton.com',    address: '46909, Torrente, Valencia' },
   { code: 'sporasub',     name: 'Sporasub',     country: 'it', www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
   { code: 'subgear',      name: 'Subgear',      country: '',   www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
-  { code: 'subvenator',   name: 'Subvenator',   country: 'ru', www: 'subvenator.ru',              background_color: '#ffffff', catalog: '', phone: '+78007004694',    email: 'shop@subvenator.ru',    address: 'г.Севастополь, Фиолентовское шоссе 87/114' },
+  { code: 'subvenator',   name: 'Subvenator',   country: 'ru', www: 'subvenator.ru',              background_color: '#252525', catalog: '', phone: '+78007004694',    email: 'shop@subvenator.ru',    address: 'г.Севастополь, Фиолентовское шоссе 87/114' },
   { code: 'suunto',       name: 'Suunto',       country: 'fi', www: 'suunto.com',                 background_color: '#ffffff', catalog: '', phone: '+3589875870',    email: '',    address: 'Tammiston kauppatie 7A FI-01510 Vantaa' },
   { code: 'taimen',       name: 'Таймень',      country: 'ru', www: 'taimen.pro',                 background_color: '#ffffff', catalog: '', phone: '+79322394990',    email: 'taimen@apox.ru',    address: 'Челябинск ул.Енисейска 17 (ГСК 321}' },
   { code: 'technisub',    name: 'Technisub',    country: 'it', www: 'us.aqualung.com',            background_color: '#ffffff', catalog: '', phone: '+3901054451',    email: '',    address: 'VIA P.GUALCO 42-44 GENOVA​, GENOVA, 16165' },
-  { code: 'tigullio',     name: 'Tigullio',     country: '',   www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
+  { code: 'tigullio',     name: 'Tigullio',     country: 'it', www: 'cstigullio.com',             background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' },
   { code: 'titan',        name: 'Titan',        country: 'ru', www: 'girs-titan.ru',              background_color: '#ffffff', catalog: '', phone: '+73432717180',    email: 'secretary@girs.ru',    address: '620144, Свердловская обл., г. Екатеринубург, ул. Сурикова 55' },
   { code: 'triton',       name: 'Triton',       country: 'lv', www: 'tritonsub.com',              background_color: '#ffffff', catalog: '', phone: '+37127760707',    email: 'hello@tritonsub.com',    address: 'Kr.Valdemara str. 63, Riga, LV-1010' },
   { code: 'tusa',         name: 'Tusa',         country: 'jp', www: 'tusa.com',                   background_color: '#ffffff', catalog: 'https://issuu.com/tusa/docs/2021-tusa-catalog_eng__d6__issuu_?fr=sNmNjODMyNjU4MQ', phone: '0336242816',    email: 'pr@tabata.co.jp',    address: '1-3-17, Higashikomagata, Sumida-ku Tokyo, 130-0005' },
-  { code: 'vector',       name: 'Vector',       country: 'ru', www: 'vector-sea.ru',              background_color: '#ffffff', catalog: '', phone: '+79384264849',    email: 'sney@live.ru',    address: 'г. Абинск ул.Некрасова 70ж инд. 353322' },
+  { code: 'vector',       name: 'Vector',       country: 'ru', www: 'vector-sea.ru',              background_color: '#f1f1f1', catalog: '', phone: '+79384264849',    email: 'sney@live.ru',    address: 'г. Абинск ул.Некрасова 70ж инд. 353322' },
   { code: 'vlanik',       name: 'Vlanik',       country: 'ru', www: 'taplink.cc/vlanikgun',       background_color: '#282828', catalog: '', phone: '+79384584459',    email: 'vlanik48@mail.ru',    address: '' },
   { code: 'zelinka',      name: 'Zelinka',      country: 'ua', www: '',                           background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: '' }
   # {code: 'borne',        name: 'Borne',        country: '',   www: '',                      background_color: '#ffffff', catalog: '', phone: '',    email: '',    address: ''},

@@ -156,6 +156,8 @@ Trestle.configure do |config|
   #
   config.auth.authenticate_with = -> { Devise.authentication_keys.first }
 
+  config.before_action { |_controller| redirect_to '/' if current_user.role != 'super' }
+
   # Customize the rendering of user avatars. Can be disabled by setting to false.
   # Defaults to the Gravatar based on the user's email address.
   #

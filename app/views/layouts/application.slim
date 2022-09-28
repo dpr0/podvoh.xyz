@@ -44,9 +44,6 @@ html
                         i.nav-icon class="#{subcategory.klass}"
                         | &nbsp
                         = subcategory.name
-
-
-                / li.nav-item.has-treeview class="#{ @category && @category.code == category.code ? 'menu-open' : '' }"
           .column.is-9
             nav.breadcrumb aria-label="breadcrumbs"
               ul
@@ -66,15 +63,6 @@ html
     = render 'layouts/footer'
 
 javascript:
-    (function () {
-        var burger = document.querySelector('.burger');
-        var menu = document.querySelector('#' + burger.dataset.target);
-        burger.addEventListener('click', function () {
-            burger.classList.toggle('is-active');
-            menu.classList.toggle('is-active');
-        });
-    })();
-
     if ("#{Rails.env}" == 'production') {
         (function (m, e, t, r, i, k, a) {
             m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
