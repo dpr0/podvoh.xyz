@@ -1,73 +1,24 @@
 section.has-text-center.has-text-white-50
-  .container
+  .container data-turbo="false"
     = form_with model: @item, url: section_category_subcategory_manufacturer_item_path(id: @item.id,
             section_id: params[:section_id], category_id: params[:category_id], subcategory_id: params[:subcategory_id], manufacturer_id: params[:manufacturer_id]), remote: false do |f|
-      .columns
-        .column.is-3
-          = link_to 'Назад', root_path, class: 'button is-link is-fullwidth has-text-weight-medium is-medium'
-        .column.is-6
-          h2.subtitle = @item.name
-          - if @item.errors.any?
-            #error_explanation
-              h2 = "#{pluralize(@item.errors.count, "error")} prohibited this device from being saved:"
-              ul
-                - @item.errors.full_messages.each do |message|
-                  li = message
-        .column.is-3
-          = f.submit 'Сохранить', class: 'button is-link is-fullwidth has-text-weight-medium is-medium'
-      .columns
-        .column.is-4
-          .field
-            = f.label :subcategory_id, 'Категория', class: 'label'
-            .control
-              = f.select :subcategory_id, Subcategory.all_cached.map { |x| [x.name, x.id] }, {}, class: 'input is-medium'
-        .column.is-8
-          .field
-            = f.label :name, 'Наименование', class: 'label'
-            .control = f.text_field :name, class: 'input is-medium'
-      .columns
-        .column.is-4
-          .field
-            = f.label :prop1, '1-ое свойство', class: 'label required'
-            .control
-              = f.text_field :prop1, class: 'input is-medium', id: :prop1, required: true
-        .column.is-4
-          .field
-            = f.label :prop2, '2-ое свойство', class: 'label required'
-            .control
-              = f.text_field :prop2, class: 'input is-medium', id: :prop2, required: true
-        .column.is-4
-          .field
-            = f.label :prop3, '3-е свойство', class: 'label required'
-            .control
-              = f.text_field :prop3, class: 'input is-medium', id: :prop3, required: true
+      = render 'form', f: f
       #modifications
         = f.fields_for :modifications do |modification|
           = render 'modification_fields', f: modification
         .links
           = turbo_frame_tag f
           = link_to_add_association 'Добавить модификацию', f, :modifications, class: 'button is-small is-link'
-      #parts
-        = f.fields_for :parts do |part|
-          = render 'part_fields', f: part
-        .links
-          = turbo_frame_tag f
-          = link_to_add_association 'Добавить часть', f, :parts, class: 'button is-small is-link'
 
 javascript:
     HTMLCollection.prototype.forEach = HTMLCollection.prototype.forEach || function (callBack) {
-        for (let i = 0; i < this.length; i++) {
-            callBack(this[i])
-        }
+        for (let i = 0; i < this.length; i++) { callBack(this[i]) }
     };
-    window.onload = function(e) {
-        set_prop1(document.getElementById('prop1').value)
-        set_prop2(document.getElementById('prop2').value)
-        set_prop3(document.getElementById('prop3').value)
+    ['prop1', 'prop2', 'prop3'].forEach((name) => {
+        let value = document.getElementById(name)
+        if (value.value) window.onload = set_prop(name, value.value)
+        value.addEventListener('change', function() { set_prop(name, this.value) });
+    })
+    function set_prop(name, text) {
+        document.getElementsByClassName(name).forEach((el) => {el.textContent = text})
     }
-    function set_prop1(z) { document.getElementsByClassName('td_prop1').forEach((el) => {el.textContent = z}) }
-    function set_prop2(z) { document.getElementsByClassName('td_prop2').forEach((el) => {el.textContent = z}) }
-    function set_prop3(z) { document.getElementsByClassName('td_prop3').forEach((el) => {el.textContent = z}) }
-    document.getElementById('prop1').addEventListener('change', function () { set_prop1(this.value) });
-    document.getElementById('prop2').addEventListener('change', function () { set_prop2(this.value) });
-    document.getElementById('prop3').addEventListener('change', function () { set_prop3(this.value) });

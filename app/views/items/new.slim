@@ -1,0 +1,4 @@
+section.has-text-center.has-text-white-50
+  .container
+    = form_with model: @item, url: section_category_subcategory_manufacturer_items_path(section_id: params[:section_id], category_id: params[:category_id], subcategory_id: params[:subcategory_id], manufacturer_id: params[:manufacturer_id]), remote: false do |f|
+      = render 'form', f: f

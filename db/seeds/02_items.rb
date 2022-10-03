@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 item1 = Item.create(manufacturer_id: Manufacturer.cached[:kayuk].id, subcategory_id: Subcategory.cached[:pnevmat].id, name: 'Борисыч', code: 'borisych', prop1: 'Длина, мм', prop2: 'До рукоятки, мм', prop3: nil, part_codes: '01111,01021,01026,01031,01155,01076,01077,01121,01131,01146', img_divider: 12)
-Modification.create(code: '20001', prop1: '450', prop2:  '59', item_id: item1.id, part_codes: '01191,01171,01161', price: 20_400, images: '0, 0, 0, 0, 0, 1, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0')
-Modification.create(code: '20003', prop1: '450', prop2: '207', item_id: item1.id, part_codes: '01191,01171,01161', price: 20_400, images: '0, 0, 0, 0, 0, 1, 6, 7, 8, 4, 5, 9, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0, 0')
-Modification.create(code: '20005', prop1: '600', prop2:  '59', item_id: item1.id, part_codes: '01192,01172,01162', price: 20_400, images: '0, 0, 1, 2, 4, 5, 3, 3, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0')
-Modification.create(code: '20007', prop1: '600', prop2: '170', item_id: item1.id, part_codes: '01192,01172,01162', price: 20_400, images: '0, 0, 1, 2, 4, 5, 3, 6, 7, 8, 3, 9, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0')
-Modification.create(code: '20009', prop1: '600', prop2: '246', item_id: item1.id, part_codes: '01192,01172,01162', price: 20_400, images: '0, 0, 1, 2, 4, 5, 6, 7, 8, 3, 3, 9, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0, 0')
-Modification.create(code: '20011', prop1: '750', prop2:  '59', item_id: item1.id, part_codes: '01193,01173,01163', price: 22_100, images: '0, 1, 2, 3, 4, 5, 3, 3, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0')
-Modification.create(code: '20013', prop1: '750', prop2: '170', item_id: item1.id, part_codes: '01193,01173,01163', price: 22_100, images: '0, 1, 2, 3, 4, 5, 3, 6, 7, 8, 3, 9, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0')
-Modification.create(code: '20015', prop1: '750', prop2: '246', item_id: item1.id, part_codes: '01193,01173,01163', price: 22_100, images: '0, 1, 2, 3, 4, 5, 6, 7, 8, 3, 3, 9, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0, 0')
-Modification.create(code: '20017', prop1: '900', prop2:  '59', item_id: item1.id, part_codes: '01194,01174,01164', price: 23_800, images: '1, 2, 3, 4, 5, 3, 3, 3, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0')
-Modification.create(code: '20019', prop1: '900', prop2: '170', item_id: item1.id, part_codes: '01194,01174,01164', price: 23_800, images: '1, 2, 3, 4, 5, 3, 3, 6, 7, 8, 3, 9, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0')
-Modification.create(code: '20021', prop1: '900', prop2: '246', item_id: item1.id, part_codes: '01194,01174,01164', price: 23_800, images: '1, 2, 3, 3, 4, 5, 6, 7, 8, 3, 3, 9, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0, 0')
+m01 = Modification.create(code: '20001', prop1: '450', prop2:  '59', item_id: item1.id, part_codes: '01191,01171,01161', price: 20_400, images: '0, 0, 0, 0, 0, 1, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0')
+m02 = Modification.create(code: '20003', prop1: '450', prop2: '207', item_id: item1.id, part_codes: '01191,01171,01161', price: 20_400, images: '0, 0, 0, 0, 0, 1, 6, 7, 8, 4, 5, 9, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0, 0')
+m03 = Modification.create(code: '20005', prop1: '600', prop2:  '59', item_id: item1.id, part_codes: '01192,01172,01162', price: 20_400, images: '0, 0, 1, 2, 4, 5, 3, 3, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0')
+m04 = Modification.create(code: '20007', prop1: '600', prop2: '170', item_id: item1.id, part_codes: '01192,01172,01162', price: 20_400, images: '0, 0, 1, 2, 4, 5, 3, 6, 7, 8, 3, 9, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0')
+m05 = Modification.create(code: '20009', prop1: '600', prop2: '246', item_id: item1.id, part_codes: '01192,01172,01162', price: 20_400, images: '0, 0, 1, 2, 4, 5, 6, 7, 8, 3, 3, 9, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0, 0')
+m06 = Modification.create(code: '20011', prop1: '750', prop2:  '59', item_id: item1.id, part_codes: '01193,01173,01163', price: 22_100, images: '0, 1, 2, 3, 4, 5, 3, 3, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0')
+m07 = Modification.create(code: '20013', prop1: '750', prop2: '170', item_id: item1.id, part_codes: '01193,01173,01163', price: 22_100, images: '0, 1, 2, 3, 4, 5, 3, 6, 7, 8, 3, 9, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0')
+m08 = Modification.create(code: '20015', prop1: '750', prop2: '246', item_id: item1.id, part_codes: '01193,01173,01163', price: 22_100, images: '0, 1, 2, 3, 4, 5, 6, 7, 8, 3, 3, 9, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0, 0')
+m09 = Modification.create(code: '20017', prop1: '900', prop2:  '59', item_id: item1.id, part_codes: '01194,01174,01164', price: 23_800, images: '1, 2, 3, 4, 5, 3, 3, 3, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0')
+m10 = Modification.create(code: '20019', prop1: '900', prop2: '170', item_id: item1.id, part_codes: '01194,01174,01164', price: 23_800, images: '1, 2, 3, 4, 5, 3, 3, 6, 7, 8, 3, 9, 0, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0')
+m11 = Modification.create(code: '20021', prop1: '900', prop2: '246', item_id: item1.id, part_codes: '01194,01174,01164', price: 23_800, images: '1, 2, 3, 3, 4, 5, 6, 7, 8, 3, 3, 9, 0, 0, 0, 0, 0, 0, 19, 20, 21, 0, 0, 0')
 
 [
   { code: '01111', name: 'Катушка',                      item_id: item1.id, price: 2550, description: 'На катушку укладывается 20 метров линя толщиной 2 мм. Диаметр шпули 65 мм и полезная ширина 28 мм. Возможна установка для левши и для правши. Соответственно в кронштейне катушки предусмотрены 2 симметрично расположенных паза под размещение фильеры для линя, которая выполнена из нержавеющей стали и имеет с двух сторон плавные скругления в отверстии прохода линя, что предотвращает его повреждение в процессе эксплуатации. Затягивается катушка и расслабляется одним движением рычага. Рычаг затяжки и ручка намотки размещены с противоположных сторон и не мешают друг другу. Пластиковые детали катушки выполнены из ударопрочной жесткой пластмассы. В комплект поставки входят два крепежных винта из нержавеющей стали.' },
@@ -38,6 +38,20 @@ Modification.create(code: '20021', prop1: '900', prop2: '246', item_id: item1.id
   { code: '01031', name: 'Пятизубец',                    item_id: item1.id, price: 3060, description: 'Пятизубец изготавливается под резьбу международного стандарта М7. Диаметр среднего и крайних зубов 6 мм. Диаметр промежуточных зубов 5 мм.  Длина центрального зуба 200 мм. Расстояние от флажка до кончика зуба 35 мм. Расстояние по осям между крайними зубами 100 мм. Флажки выполнены из пружинной нержавеющей проволоки диаметром 2 мм. Остальные элементы изготовлены из упругой нержавеющей стали. Кончики среднего и крайних зубов выполнены трехгранными и имеют большую проникающую способность по сравнению с круглыми. В основном применяется при охоте на угря. Положение флажков во время выстрела, удержания и снятия смотрите на фото. Перед очередным заряжанием не забудьте вернуть флажки в исходное положение.' }
   # {code: '', name: '',                     item_id: item1.id, price: 0, description: ''},
 ].each { |hash| Part.create(hash) }
+
+[
+  ['01191','01171','01161'].map { |code| {modification_id: m01.id, part_id: Part.find_by(code: code).id} },
+  ['01191','01171','01161'].map { |code| {modification_id: m02.id, part_id: Part.find_by(code: code).id} },
+  ['01192','01172','01162'].map { |code| {modification_id: m03.id, part_id: Part.find_by(code: code).id} },
+  ['01192','01172','01162'].map { |code| {modification_id: m04.id, part_id: Part.find_by(code: code).id} },
+  ['01192','01172','01162'].map { |code| {modification_id: m05.id, part_id: Part.find_by(code: code).id} },
+  ['01193','01173','01163'].map { |code| {modification_id: m06.id, part_id: Part.find_by(code: code).id} },
+  ['01193','01173','01163'].map { |code| {modification_id: m07.id, part_id: Part.find_by(code: code).id} },
+  ['01193','01173','01163'].map { |code| {modification_id: m08.id, part_id: Part.find_by(code: code).id} },
+  ['01194','01174','01164'].map { |code| {modification_id: m09.id, part_id: Part.find_by(code: code).id} },
+  ['01194','01174','01164'].map { |code| {modification_id: m10.id, part_id: Part.find_by(code: code).id} },
+  ['01194','01174','01164'].map { |code| {modification_id: m11.id, part_id: Part.find_by(code: code).id} }
+].flatten.each { |hash| ModificationPart.create(hash) }
 
 item2 = Item.create(manufacturer_id: Manufacturer.cached[:kayuk].id, subcategory_id: Subcategory.cached[:pnevmat].id, name: 'Каюк-13', code: 'kayuk13', prop1: 'Длина, мм', prop2: 'До рукоятки, мм', prop3: nil, part_codes: '')
 Modification.create(code: '13001', prop1: '450', prop2:  '96', item_id: item2.id, part_codes: '1,2,01191,01171,01161', price: 13_600)

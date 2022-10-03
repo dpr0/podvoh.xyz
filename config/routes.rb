@@ -19,6 +19,7 @@ Rails.application.routes.draw do
             resources :modifications do
               post :favourite, on: :collection
             end
+            resources :parts
             post :filter, on: :member
           end
         end

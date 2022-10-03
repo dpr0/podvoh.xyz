@@ -39,14 +39,7 @@
 // @import "bulma/sass/layout/section.sass";
 
 @import 'bulma/bulma';
-@import 'bulma-extensions/bulma-switch/src/sass/index';
-//@import 'bulma-extensions/bulma-slider/src/sass';
 @import "flag-icons";
-
-.bg-gradient-dark {
-  background-color: #4b545c;
-  color: #fff;
-}
 
 html, body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;

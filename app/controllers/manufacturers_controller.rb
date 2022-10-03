@@ -13,5 +13,6 @@ class ManufacturersController < ApplicationController
     @items = @manufacturer.items
     @subcategory = Subcategory.cached_by_id[@manufacturer.subcategories.first&.id]
     @category = @subcategory&.category
+    @parts = Part.where(item_id: @items.map(&:id))
   end
 end

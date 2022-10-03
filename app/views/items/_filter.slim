@@ -19,9 +19,10 @@
       .card-image
         - if mod.images
           - mod.images.split(",").map { |z| (!@reel && z.to_i == 19) ? '00' : z.to_i.to_s.rjust(2, "0") }.each_slice(@item.img_divider) do |image_part|
-            - image_part.each do |i|
-              = link_to "/assets/manufacturers/#{@item.manufacturer.code}/#{@item.code}/image_part_#{i}.jpg" do
-                = image_tag "manufacturers/#{@item.manufacturer.code}/#{@item.code}/image_part_#{i}.jpg", style: "width: #{ 100 / @item.img_divider }%;", class: 'bordered logo'
+            .xxx
+              - image_part.each do |i|
+                = link_to "/assets/manufacturers/#{@item.manufacturer.code}/#{@item.code}/image_part_#{i}.jpg" do
+                  = image_tag "manufacturers/#{@item.manufacturer.code}/#{@item.code}/image_part_#{i}.jpg", style: "width: #{ 100 / @item.img_divider }%;"
         - elsif mod.image_url
           = link_to mod.image_url do
             = image_tag mod.image_url, style: 'width: 100%;', class: 'bordered logo'

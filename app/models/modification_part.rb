@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ModificationPart < ApplicationRecord
-  belongs_to :part
+  self.table_name = :modifications_parts
+
   belongs_to :modification
+  belongs_to :part
 end

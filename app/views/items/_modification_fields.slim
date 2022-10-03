@@ -1,34 +1,54 @@
-= f.hidden_field :id
-.card.events-card
-  header.card-header
-    p.card-header-title
-      | Модификация
-    p.card-header-title
-      = f.label :price, 'Цена'
-      = f.number_field :price, class: 'control input'
-    = link_to_remove_association 'X', f, class: 'button is-small is-danger'
-  .card-table
-    .content
-      table.table.is-fullwidth.is-striped
-        tbody
-          tr
-            td.td_prop1
-            td.td_prop2
-            td.td_prop3
-          tr
-            td = f.text_field :prop1, class: 'control input'
-            td = f.text_field :prop2, class: 'control input'
-            td = f.text_field :prop3, class: 'control input'
-          tr
-            td = 'Ссылка на изображение'
-          tr
-            td colspan='3' = f.text_field :image_url, class: 'control input'
-          tr
-            td colspan='3'= f.label :text, 'Описание'
-          tr
-            td colspan='3'= f.text_area :text, class: 'control input'
-          tr
-            td colspan='3'= f.label :part_codes, 'Комплектующие'
-          tr
-            td colspan='3'= f.text_field :part_codes, class: 'control input'
-
+.nested-fields
+  .card.has-background-primary-light
+    .card-table
+      .columns
+        .column.is-4
+          .field.is-vertical
+            label.label
+              | Модификация
+            .field-body
+              .field
+                p.control
+                  = f.number_field :id, class: 'input', disabled: true
+        .column.is-4
+          .field.is-vertical
+            label.label
+              | Цена
+            .field-body
+              .field
+                p.control
+                  = f.number_field :price, class: 'input'
+        .column.is-4
+          = link_to_remove_association 'Удалить', f, class: 'button is-small is-danger'
+      .columns
+        .column.is-4
+          .field.is-vertical
+            label.label.prop1
+              | 1-ое свойство
+            .field-body
+              .field
+                p.control
+                  = f.text_field :prop1, class: 'input'
+        .column.is-4
+          .field.is-vertical
+            label.label.prop2
+              | 2-ое свойство
+            .field-body
+              .field
+                p.control
+                  = f.text_field :prop2, class: 'input'
+        .column.is-4
+          .field.is-vertical
+            label.label.prop3
+              | 3-е свойство
+            .field-body
+              .field
+                p.control
+                  = f.text_field :prop3, class: 'input'
+      .columns
+        .column.is-3 = 'Фото'
+        .column.is-9 = f.text_field :image_url, class: 'control input'
+      .columns
+        .column.is-3 = f.label :text, 'Описание'
+        .column.is-9 = f.text_area :text, class: 'input is-small', placeholder: 'Описание', rows: 5, cols: 5
+  p

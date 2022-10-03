@@ -1,0 +1,28 @@
+.columns.is-centered
+  .column.is-3
+    = link_to 'Назад', root_path, class: 'button is-link is-fullwidth has-text-weight-medium is-medium'
+  .column.is-6
+    - if @part.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@part.errors.count, 'error')} prohibited this device from being saved:"
+        ul
+          - @part.errors.full_messages.each do |message|
+            li = message
+  .column.is-3
+    = f.submit 'Сохранить', class: 'button is-link is-fullwidth has-text-weight-medium is-medium'
+.columns
+  .column.is-6
+    .field
+      = f.label :name, 'Наименование', class: 'label'
+      .control = f.text_field :name, class: 'input is-medium'
+  .column.is-6
+    .field
+      = f.label :price, 'Цена', class: 'label'
+      .control
+        = f.number_field :price, class: 'input is-medium'
+.columns
+  .column.is-12
+    .field
+      = f.label :description, 'Описание', class: 'label required'
+      .control
+        = f.text_field :description, class: 'input is-medium', required: true

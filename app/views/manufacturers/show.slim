@@ -35,7 +35,25 @@ section.has-text-center
               small Каталог:
               small &nbsp
               small = link_to 'Скачать', @manufacturer.catalog
-    ul
-      - @items.each do |item|
-        li
-          = link_to item.name, section_category_subcategory_manufacturer_item_path(Section.podvoh, item.subcategory.category.id, item.subcategory.id, item.manufacturer.id, item.id)
+    - @items.each_slice(4) do |batch|
+      .columns
+        - batch.each do |item|
+          .column.is-3
+            .card.has-background-primary-light
+              header.card-header
+                p.card-header-title
+                  span style="white-space: nowrap;" = item.name
+              - if ['super', Manufacturer.cached_by_id[@manufacturer.id].code].include? current_user&.role
+                .card-content
+                  p= link_to 'Просмотр', section_category_subcategory_manufacturer_item_path(Section.podvoh, item.subcategory.category.id, item.subcategory.id, item.manufacturer.id, item.id)
+                  p= link_to 'Редактировать', edit_section_category_subcategory_manufacturer_item_path(item.id, section_id: Section.podvoh, category_id: item.subcategory.category.id, subcategory_id: item.subcategory.id, manufacturer_id: item.manufacturer.id)
+    - if ['super', Manufacturer.cached_by_id[@manufacturer.id].code].include? current_user&.role
+      - @parts.each_slice(4) do |batch|
+        .columns
+          - batch.each do |part|
+            - item = part.item
+            .column.is-3
+              .card.has-background-primary-light
+                header.card-header
+                  p.card-header-title
+                    span style="white-space: nowrap;" = link_to part.name, edit_section_category_subcategory_manufacturer_item_part_path(part.id, section_id: Section.podvoh, category_id: item.subcategory.category.id, subcategory_id: item.subcategory.id, manufacturer_id: item.manufacturer.id,  item_id: part.item_id)
