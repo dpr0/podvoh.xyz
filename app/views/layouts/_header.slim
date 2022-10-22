@@ -17,14 +17,17 @@ section.hero.is-info.welcome.is-small
               = link_to destroy_user_session_path, data: { 'turbo-method': :delete } do
                 i.fa-solid.fa-right-from-bracket
         - else
-          .column.is-4
+          .column.is-3
+            h2.subtitle
+              script src="https://telegram.org/js/telegram-widget.js?21" data-telegram-login="ruPodvohXYZBot" data-size="large" data-radius="10" data-auth-url="podvoh.xyz" data-request-access="write"
+          .column.is-3
             h2.subtitle
               = link_to omniauth_authorize_path(:user, :yandex) do
                 = "Войти через"
                 | &nbsp
                 i.fab.fa-yandex
                 = "ндекс"
-          .column.is-4
+          .column.is-3
             h2.subtitle
               = link_to omniauth_authorize_path(:user, :telegram) do
                 = "Войти через"
