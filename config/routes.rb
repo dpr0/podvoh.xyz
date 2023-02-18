@@ -4,9 +4,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
   root 'manufacturers#index'
 
+  resources :apdks
+
   resources :users, only: [:index, :show] do
     post :filter, on: :collection
   end
+
   resources :manufacturers do
     post :filter, on: :collection
   end

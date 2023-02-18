@@ -1,0 +1,145 @@
+section.has-text-center.has-text-white-50
+  .container
+    = form_with model: @user, url: apdks_path, remote: false do |f|
+      / .columns
+      /   .column.is-4
+      /     .field
+      /       = f.label :subcategory_id, 'Категория', class: 'label'
+      /       .control
+      /         = f.select :subcategory_id, Subcategory.all_cached.map { |x| [x.name, x.id] }, {}, class: 'input is-medium'
+      /   .column.is-8
+      /     .field
+      /       = f.label :name, 'Наименование', class: 'label'
+      /       .control = f.text_field :name, class: 'input is-medium'
+      h1
+        | Межрегиональная общественная организация «Ассоциация подводной деятельности Крыма и Севастополя»
+      h2
+        | Вступительная анкета члена МР ОО «АПДКС» №
+
+      .column.is-4
+        .field
+          = f.label :surname, 'Фамилия', class: 'label required'
+          .control
+            = f.text_field :surname, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :name, 'Имя', class: 'label required'
+          .control
+            = f.text_field :name, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :last_name, 'Отчество', class: 'label required'
+          .control
+            = f.text_field :last_name, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :birthdate, 'Дата рождения', class: 'label required'
+          .control
+            = f.text_field :birthdate, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :birthplace, 'Место рождения', class: 'label required'
+          .control
+            = f.text_field :birthplace, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :passport_serial, 'Паспорт: серия номер', class: 'label required'
+          .control
+            = f.text_field :passport_serial, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :passport_date, 'Паспорт: дата выдачи', class: 'label required'
+          .control
+            = f.text_field :passport_date, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :passport_organ, 'Паспорт: орган выдачи', class: 'label required'
+          .control
+            = f.text_field :passport_organ, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :passport_registration, 'Паспорт: регистрация/прописка', class: 'label required'
+          .control
+            = f.text_field :passport_registration, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :underwater_date, 'Год начала подводной деятельности', class: 'label required'
+          .control
+            = f.text_field :underwater_date, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :underwater_type, 'Тип подводной деятельности (ПО, фридайвиг, дайвинг, другое)', class: 'label required'
+          .control
+            = f.text_field :underwater_type, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :underwater_certs, 'Перечень сертификатов подтверждающих квалификацию (если есть)', class: 'label required'
+          .control
+            = f.text_field :underwater_certs, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :underwater_records, 'Достижения в области подводного деятельности', class: 'label required'
+          .control
+            = f.text_field :underwater_records, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :learning, 'Хотите ли вы пройти обучение подводной охоте или фридайвингу?', class: 'label required'
+          .control
+            = f.text_field :learning, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :medical, 'Медицинские противопоказания (если есть)', class: 'label required'
+          .control
+            = f.text_field :medical, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :phone, 'Телефон', class: 'label required'
+          .control
+            = f.text_field :phone, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :email, 'Электронная почта', class: 'label required'
+          .control
+            = f.text_field :email, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :workplace, 'Место работы', class: 'label required'
+          .control
+            = f.text_field :workplace, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :profession, 'Направление профессиональной деятельности', class: 'label required'
+          .control
+            = f.text_field :profession, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :other, 'Дополнения (по усмотрению вступающего)', class: 'label required'
+          .control
+            = f.text_field :other, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :agreement1, 'прошу принять меня в члены Межрегиональной общественной организации «Ассоциация подводной деятельности Крыма и Севастополя» (МР ОО «АПДКС»). С Уставом МР ОО «АПДКС» ознакомлен и обязуюсь выполнять его требования. Согласен с условиями вступления в МР ОО «АПДКС»', class: 'label required'
+          .control
+            = f.text_field :agreement1, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :agreement2, 'Согласен с обработкой моих персональных данных в МР ОО «АПДКС»', class: 'label required'
+          .control
+            = f.text_field :agreement2, class: 'input is-medium'
+      .column.is-4
+        .field
+          = f.label :agreement3, 'Я прочитал данное заявление о снятии ответственности и принятии риска и полностью понимаю его условия, понимаю, что отказываюсь от существенных прав, подписывая его, и подписываю его добровольно, находясь  в полном сознании и в дееспособном состоянии. Я также понимаю, что я не должен и не имею права заниматься подводной охотой/фридайвингом, находясь  в состоянии наркотического или алкогольного опьянения, под воздействием лекарственных препаратов, чьё действие несовместимо с занятиями подводной охотой/фридайвингом, при наличии явных медицинских противопоказаний.', class: 'label required'
+          .control
+            = f.text_field :agreement3, class: 'input is-medium'
+      .columns.is-centered
+        .column.is-3
+          = link_to 'На главную', root_path, class: 'button is-link is-fullwidth has-text-weight-medium is-medium'
+        .column.is-6
+          - if @user.errors.any?
+            #error_explanation
+              h2 = "#{pluralize(@user.errors.count, 'error')} prohibited this user from being saved:"
+              ul
+                - @user.errors.full_messages.each do |message|
+                  li = message
+        .column.is-3
+          = f.submit 'Сохранить', class: 'button is-link is-fullwidth has-text-weight-medium is-medium'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_03_072222) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_18_130000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -139,6 +139,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_03_072222) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "surname"
+    t.string "last_name"
+    t.date "birthdate"
+    t.string "birthplace"
+    t.string "passport_serial"
+    t.date "passport_date"
+    t.string "passport_organ"
+    t.string "passport_registration"
+    t.string "underwater_date"
+    t.string "underwater_type"
+    t.string "underwater_certs"
+    t.string "underwater_records"
+    t.string "learning"
+    t.string "medical"
+    t.string "workplace"
+    t.string "profession"
+    t.string "other"
+    t.string "charter"
+    t.boolean "agreement1"
+    t.boolean "agreement2"
+    t.boolean "agreement3"
   end
 
   add_foreign_key "authorizations", "users"
