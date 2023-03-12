@@ -4,7 +4,7 @@ lock '3.17.1'
 
 server 'podvoh.krsz.ru', port: 2222, roles: %w[app db web], primary: true
 
-set :rbenv_ruby,      '3.0.3'
+set :rbenv_ruby,      '3.0.5'
 set :application,     'podvoh.xyz'
 set :repo_url,        'git@github.com:dpr0/podvoh.xyz.git'
 set :linked_files,    fetch(:linked_files, []).push('config/cable.yml', 'config/database.yml', 'config/secrets.yml', 'config/master.key', 'config/credentials.yml.enc', '.env')
